@@ -23,5 +23,6 @@ Route::post('/addUser', 'App\Http\Controllers\SignupController@addUser');
 Route::post('/login', 'App\Http\Controllers\LoginController@login');
 
 Route::group(['prefix'=>'reader'],function(){
-    Route::get('/home','App\Http\Controllers\Reader\HomeController@home');
+    Route::get('/home', 'App\Http\Controllers\Reader\HomeController@home');
+    Route::get('/book/{id}', 'App\Http\Controllers\Reader\BookController@book');
 });

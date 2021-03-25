@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>memorial books</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+    <!-- fevicon -->
+    <link rel="icon" href="{{asset('images/fevicon.png')}}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body class="main-layout home_page">
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="{{asset('images/loading.gif')}}" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="index.html"><img src="{{asset('images/logo.png')}}" alt="logo"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <div class="menu-area">
+                            <div class="limit-box">
+                                <nav class="main-menu">
+                                    <ul class="menu-area-main">
+                                        <li class="active"> <a href="index.html">Trang chủ</a> </li>
+                                        <li> <a href="about.html">Giới thiệu</a> </li>
+                                        <li><a href="books.html">Sách mới</a></li>
+                                        <li><a href="library.html"><span class="dropdown">Thư viện</a></li>
+                                        <li><a href="contact.html">Liên hệ</a></li>
+                                        <li class="mean-last">
+                                            <a href="#"><img src="{{asset('images/search_icon.png')}}" alt="#" /></a>
+                                        </li>
+                                        <li class="mean-last">
+                                            <a href="#">
+                                                <img src="{{asset('images/top-icon.png')}}" alt="#" />
+                                                <span>{{Auth::user()->name}}</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end header inner -->
+    </header>
+    <!-- end header -->
+
+    <div class="a-book col-md-8">
+        @foreach($book as $row)
+        <div class="header-padding"></div>
+        <div class="info-book">
+            <img src="{{asset('images/'.$row->image)}}" />
+            <div class="info">
+                <h2>{{$row->name}} </h2>
+                <input type="hidden" value="{{$row->id}}" id="idbook">
+                <input type="hidden" value="{{Auth::user()->id}}" id="iduser">
+                <button type="submit" class="like"><i class="fas fa-thumbs-up"></i>&ensp;Thích&ensp;  82</button>
+                <table>
+                    <tr>
+                        <td>
+                            <p>{{$row->author}} : <strong><a href="#">J.K.Jowling</a></strong></p>
+                        </td>
+                        <td class="an" style="padding-left:20px;">
+                            <p>Nhà xuất bản : <strong><a href="">{{$row->category}} </a></strong></p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Thể loại : <strong><a href="#">Tiểu thuyết</a></strong></p>
+                        </td>
+                        <td class="an" style="padding-left:20px;">
+                            <p>Số trang : <strong>360</strong> trang</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Mã sách : <strong style=" color: #B32137;">{{$row->id}}</strong></p>
+                        </td>
+                        <td class="an" style="padding-left:20px;">
+                            <p><i class="fa fa-eye" aria-hidden="true"></i>&ensp;Lượt xem : <strong>6523712</strong></p>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="review">
+                    <span>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                   </svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                   </svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/> 
+                   </svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                   </svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                   </svg>
+                   <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+                </span>
+                    <p>Đánh giá : <strong>4.5</strong>/5 từ <strong>12479</strong> lượt</p>
+                </div>
+
+                <div class="info-button">
+                    <button id="muon-sach">Mượn sách</button>
+                    <a href="#"><button id="doc-online">Đọc online</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="description-book">
+            <h3 style="height: 40px;
+          color: #ffffff;
+          background-color: #B32137;
+          line-height: 40px;
+          padding-left: 25px;
+          border-radius: 5px;">Giới thiệu</h3>
+            <p>Harry Potter và Hòn đá Phù thủy (nguyên tác: Harry Potter and the Philosopher's Stone, nghĩa: Harry Potter và Hòn đá Giả kim) là tiểu thuyết kỳ ảo của nữ văn sĩ người Anh J. K. Rowling. Đây là cuốn đầu trong loạt tiểu thuyết Harry Potter và
+                là tiểu thuyết đầu tay của J. K. Rowling. Nội dung sách kể về Harry Potter, một phù thủy thiếu niên chỉ biết về tiềm năng phép thuật của mình sau khi nhận thư mời nhập học tại Học viện Ma thuật và Pháp thuật Hogwarts vào đúng vào dịp sinh
+                nhật thứ mười một. Ngay năm học đầu tiên, Harry đã có những người bạn thân lẫn những đối thủ ở trường như Ron, Hermione, Draco,.... Được bạn bè giúp sức, Harry chiến đấu chống lại sự trở lại của Chúa tể Hắc ám Voldemort, kẻ đã sát hại
+                cha mẹ cậu nhưng lại thảm bại khi toan giết Harry dù cậu khi đó chỉ mới 15 tháng tuổi.
+            </p>
+        </div>
+        @endforeach
+        <!-- Bình luận -->
+        <div class="comment">
+            <h3>Bình luận</h3>
+            <div class="soluong"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                    <div class="comments">
+                        <div class="comments-details">
+                        <span class="total-comments comments-sort">117 Bình luận</span>
+                        </div>
+                        <div class="comment-box add-comment">
+                        <span class="commenter-pic">
+                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                        </span>
+                        <span class="commenter-name">
+                            <input type="text" placeholder="Add a public comment" name="Add Comment">
+                            <button type="submit" class="btn btn-default">Comment</button>
+                            <button type="cancel" class="btn btn-default">Cancel</button>
+                        </span>
+                        </div>
+                        <div class="comment-box">
+                        <span class="commenter-pic">
+                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                        </span>
+                        <span class="commenter-name">
+                            <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
+                        </span>       
+                        <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
+                        <div class="comment-meta">
+                            <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
+                            <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
+                            <button class="comment-reply reply-popup"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
+                        </div>
+                        <div class="comment-box add-comment reply-box">
+                            <span class="commenter-pic">
+                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                            </span>
+                            <span class="commenter-name">
+                            <input type="text" placeholder="Add a public reply" name="Add Comment">
+                            <button type="submit" class="btn btn-default">Reply</button>
+                            <button type="cancel" class="btn btn-default reply-popup">Cancel</button>
+                            </span>
+                        </div>
+                        </div>
+                        <div class="comment-box">
+                        <span class="commenter-pic">
+                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                        </span>
+                        <span class="commenter-name">
+                            <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
+                        </span>       
+                        <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
+                        <div class="comment-meta">
+                            <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
+                            <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
+                            <button class="comment-reply"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
+                        </div>
+                        <div class="comment-box replied">
+                            <span class="commenter-pic">
+                                <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                            </span>
+                            <span class="commenter-name">
+                                <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
+                            </span>       
+                            <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
+                            <div class="comment-meta">
+                                <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
+                                <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
+                                <button class="comment-reply"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
+                            </div>
+                            <div class="comment-box replied">
+                            <span class="commenter-pic">
+                                <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                            </span>
+                            <span class="commenter-name">
+                                <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
+                            </span>       
+                            <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
+                            <div class="comment-meta">
+                                <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
+                                <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
+                                <button class="comment-reply"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End bình luận -->
+    </div>
+    <!-- footer -->
+    <!-- Mượn sách -->
+    <div class="dialog-dk" id="from-muon-sach">
+        <div class="dialog-background-dk"></div>
+        <div class="dialog-box-dk">
+            <div class="dialog-box-header">
+                <span class="dialog-text-header">Mượn sách</span>
+                <button class="dialog-close">&times;</button>
+            </div>
+            <div class="dialog-box-content">
+                <div class="dialog-content-item">
+                    Họ tên (<span style="color: red;">*</span>):
+                    <input class="form-control border-input" placeholder="Họ tên" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Mã thẻ thư viện (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" placeholder="mã thẻ" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Số điện thoại liên hệ (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" placeholder="Số điện thoại" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Email liên hệ
+                    <input class="form-control border-input" placeholder="email" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Tên sách - Mã sách (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" placeholder="Harry Potter - B0123" type="text">
+                </div>
+                <div style="margin:5px 40px 0px 40px;">Ngày mượn (<span style="color: red;">*</span>)</div>
+                <div class="dialog-content-item item-2">
+                    <input class="form-control border-input" type="date">
+                    <select>
+                   <option style="color: grey;">Thời hạn mượn</option>
+                   <option>1 tháng</option>
+                   <option>2 tháng</option>
+                   <option>3 tháng</option>
+                   <option>6 tháng</option>
+                </select>
+                </div>
+                <div class="check"><input type="checkbox"> Tôi đồng ý các điều khoản trên</div>
+                <div class="dialog-content-item">
+
+                    <a href="book.html"><button class="dangky">Gửi</button></a>
+                </div>
+            </div>
+            <div class="dialog-box-footer">
+            </div>
+        </div>
+    </div>
+    <!-- Đăng ký -->
+    <!-- end mượn sách -->
+    <!-- Javascript files-->
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/jquery-3.0.0.min.js')}}"></script>
+    <script src="{{asset('js/plugin.js')}}"></script>
+    <script src="{{asset('js/uikit-icons.min.js')}}"></script>
+
+    <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
+
+    <script>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function(){
+            $('.like').click(function(){
+                var idbook = $('#idbook').val();
+                var iduser = $('#iduser').val();
+                $.ajax({
+                    url: '',
+                    type: 'post',
+                    data: {_token: CSRF_TOKEN, idbook:idbook, iduser:iduser},
+                    success: function(response){
+
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

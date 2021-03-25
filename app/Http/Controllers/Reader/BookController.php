@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 
-class HomeController extends Controller
+class BookController extends Controller
 {
-    public function home()
+    public function book($id)
     {
-        $book = DB::table('books')->get();
-        return view("reader.home",['book'=>$book]);
+        $book = DB::table('books')->where('id',$id)->get();
+        return view("reader.book", ['book'=>$book]);
     }
 }
 

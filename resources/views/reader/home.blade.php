@@ -234,78 +234,17 @@
                 </div>
             </div>
             <div class="row box">
+            @foreach($book as $row)
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                     <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
+                        <a href="/library/public/reader/book/{{$row->id}}">
+                        <figure><img src="{{asset('images/'.$row->image)}}" alt="img" /></figure>
                         </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
+                        <div class="book-header">{{$row->name}}</div>
                         <a href="book.html"><button>Xem thêm</button></a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
-                        </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
-                        </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
-                        </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
-                        </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
-                        </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
-                        </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <div class="book-box">
-                        <a href="book.html">
-                            <figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img" /></figure>
-                        </a>
-                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
-                    </div>
-                </div>
+            @endforeach
             </div>
             <div class="container">
                 <div class="row">
