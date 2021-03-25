@@ -1,0 +1,74 @@
+.search {
+    background-image: linear-gradient(#81256c, #b32137);
+    /* background-color: #b32137; */
+    /* margin-top: 50px; */
+    height: 150px;
+    padding: 0px 50px 0px 50px;
+    display: flex;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 50px;
+}
+
+.header-search {
+    font-size: 30px;
+    color: #b32137;
+    margin-top: 50px;
+    height: 90px;
+    text-align: center;
+    line-height: 90px;
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+
+.search .search-book {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 50px;
+    flex: 3;
+}
+
+.search input {
+    height: 50px;
+    width: 80%;
+    border-radius: 15px;
+    border: 0;
+    padding-left: 30px;
+}
+
+.search .search-book button {
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    border-radius: 15px;
+}
+
+.search .search-theloai {
+    flex: 1;
+    height: 50px;
+}
+
+.search .search-theloai select {
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    padding-left: 20px;
+    margin-top: 50px;
+}
+
+.search .search-theloai button {
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    padding-left: 20px;
+}
+
+.search-theloai select option {
+    background-color: #ffffff;
+    border: 1px solid grey;
+}
+
+.search-theloai select option:hover {
+    background-color: brown;
+    color: #ffffff;
+}

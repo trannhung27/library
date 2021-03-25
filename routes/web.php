@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/index','App\Http\Controllers\SignupController@index');
+
+// Route::post('insertdata','App\Http\Controllers\LoginController@insertdata');
+// Route::post('insertdata','App\Http\Controllers\LoginController@insertdata');
+
+Route::post('/addUser', 'App\Http\Controllers\SignupController@addUser');
+Route::post('/login', 'App\Http\Controllers\LoginController@login');
+
+Route::group(['prefix'=>'reader'],function(){
+    Route::get('/home','App\Http\Controllers\Reader\HomeController@home');
 });

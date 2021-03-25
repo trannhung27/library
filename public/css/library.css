@@ -1,0 +1,45 @@
+.Library .btn-group {
+    padding: 30px;
+}
+
+.Library .btn-group .btn:hover {
+    background-color: #e32137;
+    box-shadow: 3px 3px 3px gray;
+}
+
+.Library .btn-group .btn {
+    background-color: #b32137;
+    height: 50px;
+    width: 300px;
+    /* border-radius: 15px; */
+    font-size: 18px;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 20px;
+    border-radius: 0px;
+    /* border: 2px solid  #000000; */
+}
+
+.Library .dropdown-menu {
+    border: 1px solid #b32137;
+    margin: 0;
+    padding: 0;
+}
+
+.Library .dropdown-menu>li {
+    border-bottom: 1px solid #b32137;
+    padding-left: 10px;
+    width: 300px;
+}
+
+.Library .dropdown-menu>li:hover {
+    background-color: #bbbbbb;
+}
+
+.Library .dropdown-menu>li> :hover {
+    color: #b32137;
+}
+
+.read-more {
+    margin-top: 30px;
+}
