@@ -19,10 +19,19 @@ class SignupController extends Controller
         $email = $request->input('email');
         $phone = $request->input('phone');
         $password =bcrypt($request->input('password'));
+        $doituong = "reader";
 
-        $data = array('name'=>$name, "phone"=>$phone, "email"=>$email, "password"=>$password);
-        $insertid = DB::table('users')->insertGetId($data);
-        return $insertid;
+        $user = new User();
+        $user->name = $name;
+        $user->email= $email;
+        $user->phone = $phone;
+        $user->password = $password;
+        $user->doituong = 'reader';
+        $user->save();
+
+        // $data = array('name'=>$name, "phone"=>$phone, "email"=>$email, "password"=>$password, "doituong"=>$doituong);
+        // $insertid = DB::table('users')->insertGetId($data);
+        // return $insertid;
     }
 }
 

@@ -92,7 +92,7 @@
                 <h2>{{$row->name}} </h2>
                 <input type="hidden" value="{{$row->id}}" id="idbook">
                 <input type="hidden" value="{{Auth::user()->id}}" id="iduser">
-                <button type="submit" class="like"><i class="fas fa-thumbs-up"></i>&ensp;Thích&ensp;  82</button>
+                <button type="submit" id="like" class="like"><i class="fas fa-thumbs-up"></i>&ensp;Thích&ensp;  82</button>
                 <table>
                     <tr>
                         <td>
@@ -321,23 +321,51 @@
     <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>
 
-    <script>
+    <!-- <script>
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
             $('.like').click(function(){
-                var idbook = $('#idbook').val();
-                var iduser = $('#iduser').val();
-                $.ajax({
-                    url: '',
-                    type: 'post',
-                    data: {_token: CSRF_TOKEN, idbook:idbook, iduser:iduser},
-                    success: function(response){
-
-                    }
-                });
+                // var idbook = $('#idbook').val();
+                // var iduser = $('#iduser').val();
+                // $.ajax({
+                //     url: 'addUser',
+                //     type: 'post',
+                //     data: {_token: CSRF_TOKEN, idbook:idbook, iduser:iduser},
+                //     success: function(response){
+                        
+                //     }
+                // });
             });
         });
-    </script>
+    </script> -->
+
+
 </body>
+<script type='text/javascript'>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    $(document).ready(function(){
+        //Xử lý ajax cho việc đăng ký
+        $('#like').click(function(){
+            var name = "abcde";
+            var email = "umlke";
+            var phone = "bcth";
+            var password = "abcd";
+            if(name != '' && email != '' && phone != '' &&password != ''){
+                $.ajax({
+                    url: './addUser',
+                    type: 'post',
+                    data: {_token: CSRF_TOKEN,name: name,email: email,phone:phone,password:password},
+                    success: function(response){
+                        alert("thêm thành công");
+                    }
+                });
+            }
+            else{
+                alert('Fill all fields');
+            }
+        });
+    });
+</script>    
 
 </html>

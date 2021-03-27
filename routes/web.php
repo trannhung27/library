@@ -25,4 +25,12 @@ Route::post('/login', 'App\Http\Controllers\LoginController@login');
 Route::group(['prefix'=>'reader'],function(){
     Route::get('/home', 'App\Http\Controllers\Reader\HomeController@home');
     Route::get('/book/{id}', 'App\Http\Controllers\Reader\BookController@book');
+    Route::get('/thu', 'App\Http\Controllers\Reader\Thu@index');
+    // Route::post('/addUser', 'App\Http\Controllers\SignupController@addUser');
 });
+
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('/home', 'App\Http\Controllers\Admin\AdminController@home');
+    Route::post('/changepass', 'App\Http\Controllers\Admin\AdminController@changepass');
+});
+Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');

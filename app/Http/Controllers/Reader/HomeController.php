@@ -14,5 +14,11 @@ class HomeController extends Controller
         $book = DB::table('books')->get();
         return view("reader.home",['book'=>$book]);
     }
+
+    public function thu()
+    {
+        $book = DB::table('books')->get();
+        return view("reader.thu",['book'=>$book]);
+    }
 }
 

@@ -590,7 +590,7 @@
             var password = $('#password').val();
             if(name != '' && email != '' && phone != '' &&password != ''){
                 $.ajax({
-                    url: 'addUser',
+                    url: "{{URL::to('addUser')}}",
                     type: 'post',
                     data: {_token: CSRF_TOKEN,name: name,email: email,phone:phone,password:password},
                     success: function(response){
@@ -619,6 +619,10 @@
                     success: function(response){
                         if(response == 1){
                             window.location.replace('reader/home');
+                        }
+                        if(response == 2)
+                        {
+                            window.location.replace('admin/home');
                         }
                         else{
                             alert("sai");

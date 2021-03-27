@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="third-slide" src="{{asset('')}}images/banner3.png" alt="Third slide">
+                    <img class="third-slide" src="{{asset('images/banner3.png')}}" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption relative">
                             <h1>The Best Libraries That<br> Every Book Lover Must<br> Visit!</h1>
@@ -241,7 +241,7 @@
                         <figure><img src="{{asset('images/'.$row->image)}}" alt="img" /></figure>
                         </a>
                         <div class="book-header">{{$row->name}}</div>
-                        <a href="book.html"><button>Xem thêm</button></a>
+                        <a href="/library/public/reader/book/{{$row->id}}"><button>Xem thêm</button></a>
                     </div>
                 </div>
             @endforeach
