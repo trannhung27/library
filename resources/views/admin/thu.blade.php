@@ -14,18 +14,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="{{asset('images/fevicon.png')}}" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <!-- body -->
 
@@ -104,17 +106,18 @@
                         <div class="profile-usermenu">
                             <!-- <div class="usermenu-item"><a href=""><i class="fas fa-bell"></i></i>&ensp;Thông báo</a></div>                    -->
                             <div class="usermenu-item" id="info-admin">
-                                <a href="#thongtincanhan-admin"></a><i class="fas fa-user"></i></i>&ensp;Thông tin cá nhân</a>
+                                <a href=""></a><i class="fas fa-user"></i></i>&ensp;Thông tin cá nhân</a>
                             </div>
-                            <button class="usermenu-item" id="manage-reader"><a href="#quanlydocgia"><i class="fas fa-users"></i></i>&ensp;Quản lý độc giả</a></button>
-                            <button class="usermenu-item" id="manage-doc"><a href="#quanlytailieu"><i class="fas fa-book"></i></i>&ensp;Quản lý tài liệu</a></button>
-                            <button class="usermenu-item" id="manage-muon-tra"><a href="quanlymuontra"><i class="fas fa-pen"></i></i>&ensp;Quản lý mượn/trả</a></button>
+                            <div class="usermenu-item" id="manage-reader"><a id="manage-reader" href="#"><i class="fas fa-users"></i></i>&ensp;Quản lý độc giả</a></div>
+                            <div class="usermenu-item" id="manage-doc"><a href=""><i class="fas fa-book"></i></i>&ensp;Quản lý tài liệu</a></div>
+                            <div class="usermenu-item" id="manage-muon-tra"><a href=""><i class="fas fa-pen"></i></i>&ensp;Quản lý mượn/trả</a></div>
                             <!-- <div class="usermenu-item"><a href=""><i class="fas fa-bar-chart"></i></i>&ensp;Thống kê dữ liệu</a></div> -->
                             <div></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9">
+                    Thông tin người dùng
                     <div class="profile-content" id="thongtincanhan-admin">
                         <div class="prof-title">
                             <h3>&#45;&#45;Thông tin cá nhân&#45;&#45;</h3>
@@ -427,11 +430,11 @@
             </div>
             <div class="edit-content">
                 Mật khẩu cũ:
-                <div><input type="" placeholder="" /></div>
+                <div><input type="password" class="oldpass" placeholder="" /></div>
                 Mật khẩu mới:
-                <div><input type="" placeholder="" /></div>
+                <div><input type="password" class="newpass" placeholder="" /></div>
             </div>
-            <div class="form-edit-footer"><a href="user.html"><button>Submit</button></a></div>
+            <div class="form-edit-footer"><button>Submit</button></div>
         </div>
 
     </div>
@@ -470,17 +473,65 @@
         </div>
 
     </div>
-    <!-- Javascript files-->
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <script src="js/uikit-icons.min.js"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/jquery-3.0.0.min.js')}}"></script>
+    <script src="{{asset('js/plugin.js')}}"></script>
+    <script src="{{asset('js/uikit-icons.min.js')}}"></script>
     <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
 </body>
+
+<script type='text/javascript'>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    
+    $(document).ready(function(){
+            
+        $('#quanlydocgia').hide();
+        $('#quanlytailieu').hide();
+        $('#quanlymuontra').hide();
+        $('#thongtincanhan-admin').show();
+        quanlydocgia();
+
+        // xử lý đổi mật khẩu
+        $('#changepass').click(function(){
+            var iduser = $('#iduser').val();
+            var oldpass = $('.oldpass').val();
+            var newpass = $('.newpass').val();
+            if(iduser != '' && oldpass != '' && newpass != ''){
+                $.ajax({
+                    url: "{{URL::to('admin/changepass')}}",
+                    type: 'post',
+                    data: {_token: CSRF_TOKEN, iduser: iduser, oldpass: oldpass, newpass:newpass},
+                    success: function(response){
+                        if(response == 1)
+                        {
+                            alert("Đã đổi mật khẩu thành công");
+                            $('.form-edit').hide();
+                        }
+                        else {
+                            alert("Vui lòng nhập lại mật khẩu");
+                        }
+                    }
+                });
+            }
+            else{
+                alert('Fill all fields');
+            }
+        });
+    });
+
+    function quanlydocgia(){
+        $('#manage-reader').click(function(){
+            $('#quanlydocgia').show();
+            $('#quanlytailieu').hide();
+            $('#quanlymuontra').hide();
+            $('#thongtincanhan-admin').hide();
+        });
+    }
+</script> 
+
 
 </html>

@@ -32,5 +32,6 @@ Route::group(['prefix'=>'reader'],function(){
 Route::group(['prefix'=>'admin'],function(){
     Route::get('/home', 'App\Http\Controllers\Admin\AdminController@home');
     Route::post('/changepass', 'App\Http\Controllers\Admin\AdminController@changepass');
+    Route::get('/thu', 'App\Http\Controllers\Admin\AdminController@thu');
 });
 Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');

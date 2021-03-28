@@ -13,7 +13,7 @@ class AdminController extends Controller
 {
     public function home()
     {
-        return view("admin.home");
+        return view("admin.homeAdmin");
     }
 
     public function changepass(Request $request){
@@ -31,5 +31,9 @@ class AdminController extends Controller
         }
     }
     
+    public function thu()
+    {
+        return view("admin.thu");
+    }
 }
 
