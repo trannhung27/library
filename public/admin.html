@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- mobile metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <!-- site metas -->
-    <title>memorial books</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <!-- style css -->
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <!-- Responsive-->
-    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-    <!-- fevicon -->
-    <link rel="icon" href="{{asset('images/fevicon.png')}}" type="image/gif" />
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
-    <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body class="main-layout home_page">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>memorial books</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   </head>
+   <!-- body -->
+   <body class="main-layout home_page">
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="{{asset('images/loading.gif')}}" alt="#" /></div>
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
       </div>
       <!-- end loader -->
       <!-- header -->
@@ -43,7 +45,7 @@
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index.html"><img src="{{asset('images/logo.png')}}" alt="logo"></a> </div>
+                           <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="logo"></a> </div>
                         </div>
                      </div>
                   </div>
@@ -57,12 +59,11 @@
                                  <li><a href="#books">Sách mới</a></li>
                                  <li><a href="library.html">Thư viện</a></li>
                                  <li><a href="contact.html">Liên hệ</a></li>
-                                 <li class="mean-last"> <a href="#search"><img src="{{asset('images/search_icon.png')}}" alt="#"/></a> </li>
+                                 <li class="mean-last"> <a href="#search"><img src="images/search_icon.png" alt="#"/></a> </li>
                                  <li class="mean-last" > 
-                                 <input type="hidden" value="{{Auth::user()->id}}" id="iduser">
                                     <a href="#">
-                                        <img src="{{asset('images/top-icon.png')}}" alt="#" />
-                                        <span id="#" style="font-size: 13px;" title="Đăng xuất">{{Auth::user()->name}}&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></span>
+                                        <img src="images/top-icon.png" alt="#" />
+                                        <span id="#" style="font-size: 13px;" title="Đăng xuất">Chi Cute&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></span>
                                       
                                     </a> 
                                  </li>
@@ -87,16 +88,14 @@
                <div class="col-md-3">          
                   <div class="profile-sidebar">                          
                      <div class="profile-userpic">
-                        <img src="{{asset('images/user.png')}}" class="img-responsive" alt="Thông tin cá nhân">               
+                        <img src="images/user.png" class="img-responsive" alt="Thông tin cá nhân">               
                      </div>                                            
                      <div class="profile-usertitle">                  
                         <div class="profile-usertitle-name">Nguyễn Văn A</div>                  
                         <div class="profile-usertitle-job">Admin: <strong style="font-weight: bold;">A03</strong></div>              
                      </div>                                                
                      <div class="profile-userbuttons">                 
-                        <button type="button" class="btn btn-success btn-sm" id="edit-pass">Chỉnh sửa</button>     
-                                 
-                        <!-- <button type="submit" id="like" class="like"><i class="fas fa-thumbs-up"></i>&ensp;Thích&ensp;  82</button> -->
+                        <button type="button" class="btn btn-success btn-sm" id="edit-pass">Chỉnh sửa</button>                  
                         <button type="button" class="btn btn-danger btn-sm">Đăng xuất&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></button> 
                      </div>                                            
                      <div class="profile-usermenu"> 
@@ -111,7 +110,6 @@
                   </div>     
                </div>      
                <div class="col-md-9"> 
-                    <!-- Thông tin cá nhân -->
                     <div class="profile-content" id="thongtincanhan-admin">	
                         <div class="prof-title">
                             <h3>&#45;&#45;Thông tin cá nhân&#45;&#45;</h3>
@@ -424,16 +422,17 @@
             </div>
             <div class="edit-content">    
                Mật khẩu cũ:
-               <div><input class="oldpass" type="password" placeholder=""/></div>
+               <div><input type="" placeholder=""/></div>
                Mật khẩu mới:
-               <div><input class="newpass" type="password" placeholder=""/></div>
+               <div><input type="" placeholder=""/></div>
             </div>
-            <div class="form-edit-footer"><<button type="submit" id="changepass">Submit</button></a></div>
+            <div class="form-edit-footer"><a href="user.html"><button>Submit</button></a></div>
          </div>
          
       </div>
       <div class="form-edit" id="form-edit-sdt">
          <div class="dialog-background"></div>
+
          <div class="form-box">
             <div class="form-edit-header">
                <h4>Đổi số điện thoại</h4>
@@ -466,52 +465,16 @@
          </div>
          
       </div>
-      <input type="hidden" value="{{Auth::user()->password}}" id="password">
-                                  
       <!-- Javascript files-->
       
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('js/jquery-3.0.0.min.js')}}"></script>
-    <script src="{{asset('js/plugin.js')}}"></script>
-    <script src="{{asset('js/uikit-icons.min.js')}}"></script>
-
-    <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script src="{{asset('js/custom.js')}}"></script>
-    
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <script src="js/uikit-icons.min.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
    </body>
-<script type='text/javascript'>
-    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-    $(document).ready(function(){
-        //Xử lý ajax cho việc đăng ký
-        $('#changepass').click(function(){
-            var iduser = $('#iduser').val();
-            var oldpass = $('.oldpass').val();
-            var newpass = $('.newpass').val();
-            if(iduser != '' && oldpass != '' && newpass != ''){
-                $.ajax({
-                    url: "{{URL::to('admin/changepass')}}",
-                    type: 'post',
-                    data: {_token: CSRF_TOKEN, iduser: iduser, oldpass: oldpass, newpass:newpass},
-                    success: function(response){
-                        if(response == 1)
-                        {
-                            alert("Đã đổi mật khẩu thành công");
-                            $('.form-edit').hide();
-                        }
-                        else {
-                            alert("Vui lòng nhập lại mật khẩu");
-                        }
-                    }
-                });
-            }
-            else{
-                alert('Fill all fields');
-            }
-        });
-    });
-</script> 
-
 </html>
