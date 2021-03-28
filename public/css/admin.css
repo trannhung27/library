@@ -1,0 +1,38 @@
+.manage-header {
+    margin: 25px;
+    background-color: #f0f0f0;
+    padding: 20px 15px;
+}
+.manage-header-text{
+    margin: 25px 0;
+    background-color: #81256c;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 17px;
+}
+.manage-header input {
+    border-radius: 5px;
+    height: 35px;
+    font-size: 15px;
+    padding-left: 8px;
+    border: 2px solid gray;
+}
+.manage-header button {
+    background-color:#81256c;
+    color: #fff;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 15px;
+    padding: 0 10px;
+}
+.manage-header button .material-icons {
+    margin-top: 5px;
+}
+.manage-content tr td .delete button{
+    color:#B32137;
+    border: 2px solid #B32137;
+}
+.manage-content tr td .delete button:hover{
+    background-color:#B32137;
+    color: #fff;
+}

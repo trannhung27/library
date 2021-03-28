@@ -381,12 +381,16 @@ $(document).ready(function(){
 	$('#from-muon-sach').hide();
 	$('#form-edit-sdt').hide();
 	$('#form-edit-email').hide();
+	$('#quanlydocgia').hide();
+	$('#quanlytailieu').hide();
+	$('#quanlymuontra').hide();
 	login();
 	signup();
 	muonsach();
 	doimatkhau();
 	editsdt();
 	editemail();
+	adminManage();
 });
 
 function login(){
@@ -445,6 +449,33 @@ function editemail(){
 		$('#form-edit-email').hide();
 	});
 }
+function adminManage(){
+	$('#manage-reader').click(function(){
+		$('#quanlydocgia').show();
+		$('#thongtincanhan-admin').hide();
+		$('#quanlytailieu').hide();
+		$('#quanlymuontra').hide();
+	});
+	$('#info-admin').click(function(){
+		$('#quanlydocgia').hide();
+		$('#thongtincanhan-admin').show();
+		$('#quanlytailieu').hide();
+		$('#quanlymuontra').hide();
+	});
+	$('#manage-doc').click(function(){
+		$('#quanlydocgia').hide();
+		$('#thongtincanhan-admin').hide();
+		$('#quanlytailieu').show();
+		$('#quanlymuontra').hide();
+	});
+	$('#manage-muon-tra').click(function(){
+		$('#quanlydocgia').hide();
+		$('#thongtincanhan-admin').hide();
+		$('#quanlytailieu').hide();
+		$('#quanlymuontra').show();
+	});
+}
+
 
 
 

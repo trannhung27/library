@@ -4,29 +4,27 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0,0, 0, 0.8);
 }
-
 .dialog-background-dk {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0,0, 0, 0.8);
     background-size: auto;
-}
 
-.dialog-box-dn {
+}
+.dialog-box-dn{
     position: fixed;
     top: calc(50% - 205px);
     left: calc(50% - 225px);
     width: 450px;
     height: 410px;
     background-color: #ffffff;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0 ,0, 0, 0.8);
 }
-
 .dialog-box-header {
     position: absolute;
     top: 0;
@@ -35,16 +33,15 @@
     height: 70px;
     border-bottom: 1px solid #dddddd;
     background-image: url(../images/footer-bg.jpg);
-}
 
-.dialog-text-header {
+}
+.dialog-text-header{
     font-size: 20px;
     line-height: 70px;
     margin-left: 25px;
     color: #ffffff;
 }
-
-.dialog-close {
+.dialog-close{
     position: absolute;
     right: 0;
     top: 0;
@@ -57,10 +54,9 @@
     line-height: 40px;
     margin-top: 15px;
     margin-right: 15px;
-    background-color: #ffffff;
+    background-color:#ffffff;
     border-radius: 50%;
 }
-
 .dialog-box-content {
     display: inline-block;
     padding-top: 20px;
@@ -72,44 +68,45 @@
     display: flex;
     flex-direction: column;
 }
-
 .dialog-content-item {
     flex: 1;
     margin-top: 20px;
     margin-left: 40px;
     margin-right: 40px;
-}
 
+}
 .dialog-content-item input {
     border: 1px solid #81256c;
-    color: rgba(0, 0, 0, 0.9);
+    color: rgba(0 ,0, 0, 0.9);
     border-radius: 10px;
 }
-
-.dialog-box-content .check {
+.dialog-box-content .check{
     font-size: 15px;
     margin-left: 40px;
     margin-top: 20px;
 }
-
 .dialog-content-item input:focus {
-    outline: 2px solid #81256c;
-    box-shadow: 2px 2px 2px #81256c inset;
+   outline: 2px solid #81256c;
+   box-shadow: 2px 2px 2px #81256c inset;
 }
 
 .dialog-box-content button {
     background-color: #81256c;
-    color: #ffffff;
+    color:#ffffff;
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
+    
 }
-
 .dialog-box-content button:hover {
     color: #ffffff;
     background-color: #80056c;
+    
 }
+
+
+
 
 .dialog-box-dk {
     position: fixed;
@@ -118,23 +115,21 @@
     width: 600px;
     height: 640px;
     background-color: #ffffff;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0 ,0, 0, 0.8);
+    
 }
 
 #from-muon-sach .dialog-content-item {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-
-#from-muon-sach .dialog-box-conten {
+#from-muon-sach .dialog-box-conten{
     padding-top: 0;
 }
-
 #from-muon-sach .dialog-content-item input {
     height: 35px;
     font-size: 15px;
 }
-
 #from-muon-sach .dialog-box-content button {
     font-size: 15px;
     float: right;
@@ -143,13 +138,12 @@
     line-height: 40px;
     font-weight: 300;
 }
-
 #from-muon-sach .dialog-content-item input[type="date"] {
-    width: 100%;
+    width:100%;
     margin-right: 5%;
     flex: 1;
+    
 }
-
 #from-muon-sach .dialog-content-item select {
     width: 100%;
     flex: 1;
@@ -158,8 +152,7 @@
     border: 1px solid #81256c;
     padding-left: 20px;
 }
-
 .item-2 {
-    display: flex;
+    display:flex;
     flex-direction: row;
 }

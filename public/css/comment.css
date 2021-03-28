@@ -1,3 +1,4 @@
+
 /************************************************************************************************/
 
 .comments-details button.btn.dropdown-toggle,
@@ -6,21 +7,17 @@
     font-weight: 500;
     color: #5e5e5e;
 }
-
 .comments-details {
     padding: 15px 15px;
 }
-
 .comments .comments .dropdown,
 .comments .dropup {
     position: relative;
 }
-
 .comments button {
     background-color: transparent;
     border: none;
 }
-
 .comments .comment-box {
     width: 100%;
     float: left;
@@ -31,14 +28,12 @@
     border-radius: 5px;
     border: 1px solid #ddd;
 }
-
 .comments .add-comment {
     background-color: transparent;
     border: none;
     position: relative;
     margin-bottom: 50px;
 }
-
 .comments .commenter-pic {
     width: 50px;
     height: 50px;
@@ -48,7 +43,6 @@
     overflow: hidden;
     background-color: #ffffff;
 }
-
 .comments .add-comment .commenter-name {
     width: 100%;
     padding-left: 75px;
@@ -56,7 +50,6 @@
     top: 20px;
     left: 0px;
 }
-
 .comments .add-comment input {
     border-top: 0px;
     border-bottom: 1px solid #ccc;
@@ -70,18 +63,15 @@
     font-weight: normal;
     padding: 10px 10px;
 }
-
 .comments .add-comment input:focus {
     border-color: #81256c;
     border-width: 2px;
 }
-
 .comments .add-comment button[type=submit] {
     background-color: #81256c;
     color: #fff;
     margin-right: 0px;
 }
-
 .comments .add-comment button {
     background-color: #81256c;
     margin: 10px 5px;
@@ -90,23 +80,19 @@
     float: right;
     color: #fff;
 }
-
 .comments .add-comment button:hover {
     background-color: #9e137e;
 }
-
 .comments .commenter-name .comment-time {
     font-weight: normal;
     margin-left: 8px;
     font-size: 15px;
 }
-
 .comments p.comment-txt {
     font-size: 15px;
     border-bottom: 1px solid #ddd;
     padding: 0px 0px 15px;
 }
-
 .comments .commenter-name {
     display: inline-block;
     position: relative;
@@ -115,7 +101,6 @@
     font-size: 16px;
     font-weight: bold;
 }
-
 .comments .comment-meta {
     font-size: 14px;
     color: #333;
@@ -123,14 +108,28 @@
     line-height: 20px;
     float: right;
 }
-
 .comments .reply-box {
     display: none;
 }
-
 .comments .replied {
     background-color: #fff;
     width: 95%;
     float: right;
     margin-top: 15px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

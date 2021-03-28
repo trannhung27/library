@@ -1,8 +1,5 @@
 /*--------------------------------------------------------------------- File Name: responsive.css ---------------------------------------------------------------------*/
-
-
 /* chứa các thiết kế đáp ứng của trang web*/
-
 
 /*------------------------------------------------------------------- 1000px x 768px ---------------------------------------------------------------------*/
 
@@ -274,6 +271,8 @@
     ul.location_icon {
         margin-bottom: 25px;
     }
+
+
     /********-----------------------------------------******/
     .search {
         display: block;
@@ -286,16 +285,19 @@
         margin-right: auto;
     }
     .search input {
+        
         width: 80%;
         border-radius: 15px;
         border: 0;
+        
+        
     }
-    .search .search-book button {
+    .search .search-book button{
         margin-top: 20px;
         margin-bottom: 0px;
         width: 10%;
     }
-    .search .search-theloai select {
+    .search .search-theloai select{
         width: 80%;
         margin-bottom: 20px;
         margin-top: 0;
@@ -388,26 +390,27 @@
         margin-right: auto;
     }
     .search input {
+        
         width: 80%;
         border-radius: 15px;
         border: 0;
+        
+        
     }
-    .search .search-book button {
+    .search .search-book button{
         margin-top: 20px;
         margin-bottom: 0px;
         width: 18%;
+        
     }
-    .search .search-theloai select {
+    .search .search-theloai select{
         width: 80%;
         margin-bottom: 20px;
         margin-top: 0;
     }
 }
-
-
 /*****************************************************************************************/
-
-@media (max-width: 767px) {
+@media (max-width: 767px){
     .comments .commenter-name {
         font-size: 13px;
         top: -5px;
@@ -416,31 +419,29 @@
         width: 40px;
         height: 40px;
     }
-    .comments .commenter-name a {
-        display: block;
+    .comments .commenter-name a{
+      display: block;
     }
-    .comments .commenter-name .comment-time {
-        display: block;
-        margin-left: 0px;
+    .comments .commenter-name .comment-time{
+      display: block;
+      margin-left: 0px;
     }
 }
-
-@media (min-width: 1260px) and (max-width: 1350px) {
+@media (min-width: 1260px) and (max-width: 1350px){
     .info-book .info {
         padding-left: 0px;
     }
 }
-
-@media (min-width: 1000px) and (max-width: 1259px) {
+@media (min-width: 1000px) and (max-width: 1259px){
     .info-book img {
-        height: 60%;
-        width: 60%;
+       height: 60%;
+       width: 60%;
     }
     .info-book .info {
-        padding: 0;
-        font-size: 12px;
+      padding: 0;
+      font-size: 12px;
     }
-    .info p {
+    .info p{
         font-size: 12px;
     }
     .info-book .like {
@@ -452,55 +453,54 @@
         margin: 5px 0 0 0;
         height: 30px;
     }
+    
 }
-
-@media (min-width: 800px) and (max-width: 999px) {
+@media (min-width: 800px) and (max-width: 999px){
     .info-book img {
         height: 60%;
         width: 60%;
-    }
-    .info-book .info {
-        padding: 0;
-        font-size: 12px;
-    }
-    .info p {
-        font-size: 12px;
-    }
-    .info-book .like {
-        margin-top: 0;
-        margin-bottom: 0;
-        height: 30px;
-    }
-    .info .info-button button {
-        margin: 5px 0 0 0;
-        height: 30px;
-    }
-    .a-book .info .an {
+     }
+     .info-book .info {
+       padding: 0;
+       font-size: 12px;
+     }
+     .info p{
+         font-size: 12px;
+     }
+     .info-book .like {
+         margin-top: 0;
+         margin-bottom: 0;
+         height: 30px;
+     }
+     .info .info-button button {
+         margin: 5px 0 0 0;
+         height: 30px;
+     }
+    .a-book .info .an{
         display: none;
     }
 }
-
-@media (min-width: 500px) and (max-width: 799px) {
+@media (min-width: 500px) and (max-width: 799px){
     .info-book img {
         height: 50%;
         width: 50%;
-    }
-    .info-book .info {
-        padding: 0;
-        font-size: 12px;
-    }
-    .info p {
-        font-size: 12px;
-    }
-    .info-book .like {
-        margin-top: 0;
-        margin-bottom: 0;
-        height: 30px;
-    }
-    .info .info-button button {
-        margin: 5px 0 0 0;
-        height: 30px;
-    }
+     }
+     .info-book .info {
+       padding: 0;
+       font-size: 12px;
+     }
+     .info p{
+         font-size: 12px;
+     }
+     .info-book .like {
+         margin-top: 0;
+         margin-bottom: 0;
+         height: 30px;
+     }
+     .info .info-button button {
+         margin: 5px 0 0 0;
+         height: 30px;
+     }
     .a-book .info .an {
         display: none;
     }

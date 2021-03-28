@@ -10,17 +10,16 @@
     color: black;
     margin-top: 90px;
 }
-
 .header-padding {
     height: 40px;
     background-color: #B32137;
     margin-right: 15px;
     margin-left: 15px;
 }
-
 .info-book {
+    
     height: 450px;
-    background-color: #ffffff;
+    background-color:#ffffff;
     display: flex;
     flex-direction: row;
     padding-left: 25px;
@@ -30,19 +29,16 @@
     margin-right: 15px;
     margin-left: 15px;
 }
-
 .info-book img {
     flex: 1;
     margin: 25px;
     /* height: 400px; */
 }
-
 .info-book .info {
     flex: 2;
     margin: 25px;
     padding-left: 50px;
 }
-
 .info-book .like {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -53,21 +49,18 @@
     color: #ffffff;
     border-radius: 10px;
 }
-
-.info-book .like:hover {
+.info-book .like:hover{
     background-color: #d1112e;
     box-shadow: 2px 2px 2px #B32137;
+    
 }
-
-.info>p {
+.info > p {
     margin-top: 5px;
 }
-
-.info p strong a {
+.info p strong a{
     font-weight: 500;
     color: #337ab7;
 }
-
 .info .info-button button {
     margin-top: 30px;
     margin-right: 20px;
@@ -79,25 +72,23 @@
     border-radius: 10px;
     text-transform: uppercase;
 }
-
-.info .info-button button:hover {
+.info .info-button button:hover{
     background-color: #aa2b8d;
     box-shadow: 2px 2px 2px #81256c;
 }
-
 .info-book .review {
     margin-top: 20px;
 }
-
 .info-book .review span {
     color: rgb(248, 193, 20);
 }
-
-.info-book .review span:hover {
+.info-book .review span:hover{
     cursor: pointer;
 }
 
-.info-b .a-book .description-book h3 {
+.info-b
+
+.a-book .description-book h3{
     height: 40px;
     color: #ffffff;
     background-color: #B32137;
@@ -105,8 +96,7 @@
     padding-left: 25px;
     border-radius: 5px;
 }
-
-.description-book {
+.description-book{
     margin-top: 10px;
     /* border: 1px solid gray; */
     border-radius: 5px;
@@ -114,7 +104,6 @@
     margin-right: 15px;
     margin-left: 15px;
 }
-
 .description-book p {
     padding-top: 30px;
     padding-left: 30px;
@@ -122,13 +111,11 @@
     text-align: justify;
     padding-bottom: 50px;
 }
-
 .a-book .comment {
     margin-top: 50px;
     padding: 0;
 }
-
-.comment h3 {
+.comment h3{
     background-color: #B32137;
     color: #ffffff;
     font-size: 20px;
