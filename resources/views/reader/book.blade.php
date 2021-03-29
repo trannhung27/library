@@ -172,87 +172,28 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                    <div class="comments">
-                        <div class="comments-details">
-                        <span class="total-comments comments-sort">117 Bình luận</span>
-                        </div>
-                        <div class="comment-box add-comment">
-                        <span class="commenter-pic">
-                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
-                        </span>
-                        <span class="commenter-name">
-                            <input type="text" placeholder="Add a public comment" name="Add Comment">
-                            <button type="submit" class="btn btn-default">Comment</button>
-                            <button type="cancel" class="btn btn-default">Cancel</button>
-                        </span>
-                        </div>
-                        <div class="comment-box">
-                        <span class="commenter-pic">
-                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
-                        </span>
-                        <span class="commenter-name">
-                            <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
-                        </span>       
-                        <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
-                        <div class="comment-meta">
-                            <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
-                            <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
-                            <button class="comment-reply reply-popup"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
-                        </div>
-                        <div class="comment-box add-comment reply-box">
-                            <span class="commenter-pic">
-                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
-                            </span>
-                            <span class="commenter-name">
-                            <input type="text" placeholder="Add a public reply" name="Add Comment">
-                            <button type="submit" class="btn btn-default">Reply</button>
-                            <button type="cancel" class="btn btn-default reply-popup">Cancel</button>
-                            </span>
-                        </div>
-                        </div>
-                        <div class="comment-box">
-                        <span class="commenter-pic">
-                            <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
-                        </span>
-                        <span class="commenter-name">
-                            <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
-                        </span>       
-                        <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
-                        <div class="comment-meta">
-                            <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
-                            <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
-                            <button class="comment-reply"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
-                        </div>
-                        <div class="comment-box replied">
-                            <span class="commenter-pic">
-                                <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
-                            </span>
-                            <span class="commenter-name">
-                                <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
-                            </span>       
-                            <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
-                            <div class="comment-meta">
-                                <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
-                                <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
-                                <button class="comment-reply"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
+                        <div class="comments">
+                            <div class="comments-details">
+                                <span class="total-comments comments-sort">117 Bình luận</span>
                             </div>
-                            <div class="comment-box replied">
-                            <span class="commenter-pic">
-                                <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
-                            </span>
-                            <span class="commenter-name">
-                                <a href="#">Happy uiuxStream</a> <span class="comment-time">2 hours ago</span>
-                            </span>       
-                            <p class="comment-txt more">Suspendisse massa enim, condimentum sit amet maximus quis, pulvinar sit amet ante. Fusce eleifend dui mi, blandit vehicula orci iaculis ac.</p>
-                            <div class="comment-meta">
-                                <button class="comment-like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 99</button>
-                                <button class="comment-dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 149</button> 
-                                <button class="comment-reply"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</button>         
+                            <div class="comment-box add-comment">
+                                <span class="commenter-pic">
+                                    <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                                </span>
+                                <span class="commenter-name">
+                                    <form action="" id="form">
+                                        <input type="text" id="add_comment" placeholder="Add a public comment" name="Add Comment">
+                                
+                                    </form>
+                                    <button type="submit" id="sendcomment" class="btn btn-default">Comment</button>
+                                    <button type="cancel" class="btn btn-default">Cancel</button>
+                                </span>
                             </div>
+                            <div class="comment-box showcomment">
+                                
                             </div>
+
                         </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -326,7 +267,6 @@
 </body>
 <script type='text/javascript'>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
     function numberlike(){
         var iduser = $('#iduser').val();
         var idbook = $('#idbook').val();
@@ -340,11 +280,10 @@
             }
         });
     }
-
-
     $(document).ready(function(){
         setInterval(function(){ 
             numberlike(); 
+            showcomment();
         }, 500);
         // Xử lý ajax cho việc đăng ký
         $('#like').click(function(){
@@ -357,14 +296,54 @@
                     data: {_token: CSRF_TOKEN, iduser: iduser, idbook:idbook},
                     success: function(response){
                     }
-
                 });
             }
             else{
                 alert('Fill all fields');
             }
         });
+
+        // Xử lý ajax comment
+        $('#sendcomment').click(function() {
+            var add_comment = $('#add_comment').val()
+            var iduser = $('#iduser').val();
+            var idbook = $('#idbook').val();
+            $.ajax({
+                url: "{{URL::to('reader/comment')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    iduser: iduser,
+                    idbook: idbook,
+                    add_comment: add_comment,
+                },
+                success: function(response) {
+                    $('#form')[0].reset();
+                }
+            });
+        });
     });
+    function showcomment() {
+        var idbook = $('#idbook').val();
+        $.ajax({
+            url: "{{URL::to('reader/showcomment')}}",
+            type: 'post',
+            data: {
+                _token: CSRF_TOKEN,
+                idbook: idbook
+            },
+            success: function(response) {
+                var comment = "";
+                $.each(response.response, function(index, value){
+                    comment += "<span class='commenter-pic'><img src='{{asset('images/avatar-default.png')}}' class='img-fluid'></span>"
+                    + "<span class='commenter-name name'>"+ value.name +"</span>"
+                    + "<p class='comment-txt more'>"+value.comment+"</p>";
+                    
+                });
+                $('.showcomment').html('').append(comment);
+            }
+        });
+    }
 </script>    
 
 </html>

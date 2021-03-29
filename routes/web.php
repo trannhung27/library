@@ -22,8 +22,9 @@ Route::group(['prefix'=>'reader'],function(){
     Route::get('/home', 'App\Http\Controllers\Reader\HomeController@home');
     Route::get('/book/{id}', 'App\Http\Controllers\Reader\BookController@book');
     Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');
-
     Route::post('/showlike', 'App\Http\Controllers\Reader\BookController@showlike');
+    Route::post('/comment', 'App\Http\Controllers\Reader\BookController@comment');
+    Route::post('/showcomment', 'App\Http\Controllers\Reader\BookController@showcomment');
 });
 
 Route::group(['prefix'=>'admin'],function(){
