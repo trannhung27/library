@@ -15,18 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/index','App\Http\Controllers\SignupController@index');
-
-// Route::post('insertdata','App\Http\Controllers\LoginController@insertdata');
-// Route::post('insertdata','App\Http\Controllers\LoginController@insertdata');
-
 Route::post('/addUser', 'App\Http\Controllers\SignupController@addUser');
 Route::post('/login', 'App\Http\Controllers\LoginController@login');
 
 Route::group(['prefix'=>'reader'],function(){
     Route::get('/home', 'App\Http\Controllers\Reader\HomeController@home');
     Route::get('/book/{id}', 'App\Http\Controllers\Reader\BookController@book');
-    Route::get('/thu', 'App\Http\Controllers\Reader\Thu@index');
-    // Route::post('/addUser', 'App\Http\Controllers\SignupController@addUser');
+    Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');
+
+    Route::post('/showlike', 'App\Http\Controllers\Reader\BookController@showlike');
 });
 
 Route::group(['prefix'=>'admin'],function(){

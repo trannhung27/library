@@ -7,6 +7,7 @@ use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Hash;
 
 class BookController extends Controller
 {
@@ -20,23 +21,31 @@ class BookController extends Controller
     {
         $idbook = $request->input('idbook') ;
         $iduser = $request->input('iduser');
-        // $data = new Like();
-        // $data->idbook = $idbook;
-        // $data->iduser = $iduser;
-        // $data->save();
+        $like = DB::table('likes')->get();
+        $idlike ="";
+        foreach($like as $row)
+        {
+            if($row->iduser == $iduser){
+                $idlike = $row->id;
+                $deleteLike = Like::find($idlike);
+                $deleteLike->delete();
+                return response()->json([[0]]);
+            }
+        }
+
+        $addlike = new Like();
+        $addlike->iduser = $iduser;
+        $addlike->idbook = $idbook;
+        $addlike->save();
     }
 
-    public function addUser(Request $request){
-
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $phone = $request->input('phone');
-        $password =bcrypt($request->input('password'));
-
-        $data = array('name'=>$name, "phone"=>$phone, "email"=>$email, "password"=>$password);
-        $insertid = DB::table('users')->insertGetId($data);
-        return $insertid;
+    public function showlike(Request $request){
+        $idbook = $request->input('idbook') ;
+        $iduser = $request->input('iduser');
+        $numberLike = DB::table('likes')->where('idbook',$idbook)->count();
+        return response()->json([[$numberLike]]);
     }
+
 
 }
 
