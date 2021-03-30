@@ -55,11 +55,11 @@
                             <div class="limit-box">
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
-                                        <li class="active"> <a href="index.html">Trang chủ</a> </li>
-                                        <li> <a href="about.html">Giới thiệu</a> </li>
-                                        <li><a href="#books">Sách mới</a></li>
-                                        <li><a href="library.html">Thư viện</a></li>
-                                        <li><a href="contact.html">Liên hệ</a></li>
+                                        <li class="active"> <a href="/library/public/reader/home">Trang chủ</a> </li>
+                                        <li> <a href="/library/public/reader/about">Giới thiệu</a> </li>
+                                        <li><a href="/library/public/reader/newbook">Sách mới</a></li>
+                                        <li><a href="/library/public/reader/library">Thư viện</a></li>
+                                        <li><a href="/library/public/reader/contact">Liên hệ</a></li>
                                         <li class="mean-last">
                                             <a href="#search"><img src="{{asset('images/search_icon.png')}}" alt="#" /></a>
                                         </li>

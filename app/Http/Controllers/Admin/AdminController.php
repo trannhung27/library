@@ -13,7 +13,9 @@ class AdminController extends Controller
 {
     public function home()
     {
-        return view("admin.homeAdmin");
+        // $info = DB::table('user')
+        $reader = DB::table('users')->where('doituong', 'reader')->get();
+        return view("admin.homeAdmin",['reader'=>$reader]);
     }
 
     public function changepass(Request $request){
@@ -30,10 +32,29 @@ class AdminController extends Controller
             return response()->json([[0]]);
         }
     }
-    
-    public function thu()
-    {
-        return view("admin.thu");
+
+    public function changephone(Request $request){
+        $iduser = $request->input('iduser');
+        $verification = $request->input('verification');
+        $newphone = $request->input('newphone');
+        $user = User::find($iduser);
+        
+            $user->phone = $newphone;
+            $user->save();   
+            return response()->json([[1]]);
+        
+    }
+
+    public function changeemail(Request $request){
+        $iduser = $request->input('iduser');
+        $verification_email = $request->input('verification_email');
+        $newemail = $request->input('newemail');
+        $user = User::find($iduser);
+        
+            $user->email = $newemail;
+            $user->save();   
+            return response()->json([[1]]);
+        
     }
 }
 

@@ -55,17 +55,17 @@
                             <div class="limit-box">
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
-                                        <li class="active"> <a href="index.html">Trang chủ</a> </li>
-                                        <li> <a href="about.html">Giới thiệu</a> </li>
-                                        <li><a href="books.html">Sách mới</a></li>
-                                        <li><a href="library.html"><span class="dropdown">Thư viện</a></li>
-                                        <li><a href="contact.html">Liên hệ</a></li>
+                                        <li  class="active"><a href="/library/public/reader/home">Trang chủ</a> </li>
+                                        <li><a href="/library/public/reader/about">Giới thiệu</a> </li>
+                                        <li><a href="/library/public/reader/newbook">Sách mới</a></li>
+                                        <li><a href="/library/public/reader/library">Thư viện</a></li>
+                                        <li><a href="/library/public/reader/contact">Liên hệ</a></li>
                                         <li class="mean-last">
-                                            <a href="#"><img src="{{asset('images/search_icon.png')}}" alt="#" /></a>
+                                            <a href="#search"><img src="{{asset('images/search_icon.png')}}" alt="#" /></a>
                                         </li>
-                                        <li class="mean-last">
+                                        <li class="mean-last" id="header-dn">
                                             <a href="#">
-                                                <img src="{{asset('images/top-icon.png')}}" alt="#" />
+                                                <img src="{{asset('images/top-icon.png')}}" alt="" />
                                                 <span>{{Auth::user()->name}}</span>
                                             </a>
                                         </li>
@@ -98,10 +98,10 @@
                 <table>
                     <tr>
                         <td>
-                            <p>{{$row->author}} : <strong><a href="#">J.K.Jowling</a></strong></p>
+                            <p>Tác giả : <strong><a href="#">{{$row->author}}</a></strong></p>
                         </td>
                         <td class="an" style="padding-left:20px;">
-                            <p>Nhà xuất bản : <strong><a href="">{{$row->category}} </a></strong></p>
+                            <p>Nhà xuất bản : <strong><a href="">{{$row->publisher}} </a></strong></p>
                         </td>
 
                     </tr>
@@ -212,39 +212,38 @@
             <div class="dialog-box-content">
                 <div class="dialog-content-item">
                     Họ tên (<span style="color: red;">*</span>):
-                    <input class="form-control border-input" placeholder="Họ tên" type="text">
+                    <input class="form-control border-input" id= "name" placeholder="Họ tên" value="{{Auth::user()->name}}" type="text">
                 </div>
-                <div class="dialog-content-item">
+                <div class="cards dialog-content-item">
                     Mã thẻ thư viện (<span style="color: red;">*</span>)
-                    <input class="form-control border-input" placeholder="mã thẻ" type="text">
+                   <input class="form-control border-input" placeholder="mã thẻ" type="text">
                 </div>
                 <div class="dialog-content-item">
                     Số điện thoại liên hệ (<span style="color: red;">*</span>)
-                    <input class="form-control border-input" placeholder="Số điện thoại" type="text">
+                    <input class="form-control border-input" id = "phone" placeholder="Số điện thoại" value="{{Auth::user()->phone}}" type="text">
                 </div>
                 <div class="dialog-content-item">
                     Email liên hệ
-                    <input class="form-control border-input" placeholder="email" type="text">
+                    <input class="form-control border-input" id="email" placeholder="email" value="{{Auth::user()->email}}" type="text">
                 </div>
                 <div class="dialog-content-item">
                     Tên sách - Mã sách (<span style="color: red;">*</span>)
-                    <input class="form-control border-input" placeholder="Harry Potter - B0123" type="text">
+                    <input class="form-control border-input" id = "book_id" placeholder="Harry Potter - B0123" type="text">
                 </div>
                 <div style="margin:5px 40px 0px 40px;">Ngày mượn (<span style="color: red;">*</span>)</div>
                 <div class="dialog-content-item item-2">
-                    <input class="form-control border-input" type="date">
-                    <select>
-                   <option style="color: grey;">Thời hạn mượn</option>
-                   <option>1 tháng</option>
-                   <option>2 tháng</option>
-                   <option>3 tháng</option>
-                   <option>6 tháng</option>
-                </select>
+                    <input class="form-control border-input" id = "date_borrow" type="date">
+                    <select id = "time_borrow">
+                        <option style="color: grey;">Thời hạn mượn</option>
+                        <option id ="1 thang">1 tháng</option>
+                        <option id ="2 thang">2 tháng</option>
+                        <option id ="3 thang">3 tháng</option>
+                        <option id ="4 thang">6 tháng</option>
+                    </select>
                 </div>
                 <div class="check"><input type="checkbox"> Tôi đồng ý các điều khoản trên</div>
                 <div class="dialog-content-item">
-
-                    <a href="book.html"><button class="dangky">Gửi</button></a>
+                    <button class="dangky send">Gửi</button>
                 </div>
             </div>
             <div class="dialog-box-footer">
@@ -322,7 +321,63 @@
                 }
             });
         });
+
+        // Xử lý hiển thị thẻ card
+        $('#muon-sach').click(function(){
+            var iduser = $('#iduser').val();
+            $.ajax({
+                url: "{{URL::to('reader/card')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    iduser: iduser,
+                },
+                success: function(response) {
+                    var card = "";
+                    $.each(response.response, function(index, value){
+                        card = value.cardNumber;
+                        
+                    });
+                    $('.cards').html("Mã thẻ thư viện (<span style='color: red;'>*</span>)<input id='card_Number' class='form-control border-input' value='"+ card +"' placeholder='mã thẻ' type='text'>");
+                }
+            });
+        });
+
+        //Xử lý đăng ký mượn sách
+        $('.send').click(function(){
+            var iduser = $('#iduser').val();
+            var name = $('#name').val();
+            var card_Number = $('#card_Number').val();
+            var phone = $('#phone').val();
+            var email = $('#email').val();
+            var book_id = $('#book_id').val();
+            var date_borrow = $('#date_borrow').val();
+            var time_borrow = $('#time_borrow').val();
+            $.ajax({
+                url: "{{URL::to('reader/muonsach')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    iduser:iduser,
+                    name: name,
+                    card_Number:card_Number,
+                    phone:phone,
+                    email:email,
+                    book_id:book_id,
+                    date_borrow:date_borrow,
+                    time_borrow:time_borrow
+                },
+                success: function(response) {
+                    alert("Đã gửi yêu cầu mượn sách và đang chờ phê duyệt");
+                    $('.dialog-dk').hide();
+                    $('header').show();
+                }
+            });
+        });
     });
+
+
+
     function showcomment() {
         var idbook = $('#idbook').val();
         $.ajax({
@@ -347,3 +402,4 @@
 </script>    
 
 </html>
+
