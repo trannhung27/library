@@ -31,6 +31,7 @@ Route::group(['prefix'=>'reader'],function(){
     Route::get('/contact', 'App\Http\Controllers\Reader\ContactController@contact');
     Route::post('/card', 'App\Http\Controllers\Reader\BookController@card');
     Route::post('/muonsach', 'App\Http\Controllers\Reader\BookController@muonsach');
+    Route::post('/search', 'App\Http\Controllers\Reader\HomeController@search');
 });
 
 Route::group(['prefix'=>'admin'],function(){
@@ -38,6 +39,16 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('/changepass', 'App\Http\Controllers\Admin\AdminController@changepass');
     Route::post('/changephone', 'App\Http\Controllers\Admin\AdminController@changephone');
     Route::post('/changeemail', 'App\Http\Controllers\Admin\AdminController@changeemail');
+    Route::get('/manage_reader', 'App\Http\Controllers\Admin\AdminController@manage_reader');
+    Route::get('/manage_doc', 'App\Http\Controllers\Admin\AdminController@manage_doc');
+    Route::get('/borrow_return', 'App\Http\Controllers\Admin\AdminController@borrow_return');
+    Route::post('/duyet', 'App\Http\Controllers\Admin\AdminController@duyet');
+    Route::get('/dangmuon', 'App\Http\Controllers\Admin\AdminController@dangmuon');
+    Route::post('/delete', 'App\Http\Controllers\Admin\AdminController@delete');
+    Route::post('/delete_book', 'App\Http\Controllers\Admin\AdminController@delete_book');
+   
+    Route::get('/thu', 'App\Http\Controllers\Admin\AdminController@thu');
+
 });
 Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');
 

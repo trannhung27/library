@@ -201,7 +201,7 @@
         </div>
         <div class="search">
             <div class="search-book">
-                <input type="text" placeholder="Tìm kiếm từ khóa..." />
+                <input type="text" class="search" placeholder="Tìm kiếm từ khóa..." />
                 <button><img src="images/search_icon.png" /></button>
             </div>
             <div class="search-theloai">
@@ -620,7 +620,7 @@
                         if(response == 1){
                             window.location.replace('reader/home');
                         }
-                        if(response == 2)
+                        else if(response == 2)
                         {
                             window.location.replace('admin/home');
                         }

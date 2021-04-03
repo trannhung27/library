@@ -16,6 +16,7 @@ class CreateBorrowReturnsTable extends Migration
         Schema::create('borrow_returns', function (Blueprint $table) {
             $table->id();
             $table->integer('id_reader');
+            $table->integer('id_book');
             $table->date('dateBorrow');
             $table->date('requiredDateReturn')->nullable();
             $table->date('dateReturn');

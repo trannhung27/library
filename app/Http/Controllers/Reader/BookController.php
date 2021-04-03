@@ -37,7 +37,7 @@ class BookController extends Controller
         $idlike ="";
         foreach($like as $row)
         {
-            if($row->iduser == $iduser){
+            if($row->iduser == $iduser && $row->idbook == $idbook){
                 $idlike = $row->id;
                 $deleteLike = Like::find($idlike);
                 $deleteLike->delete();
@@ -88,8 +88,10 @@ class BookController extends Controller
         $date_borrow = $request->input('date_borrow');
         $time_borrow = $request->input('time_borrow');
         $time = explode(" ", $time_borrow);
+
         $borrow = new Borrow_return();
         $borrow->id_reader = $iduser;
+        $borrow->id_book = $book_id;
         $borrow->dateBorrow = $date_borrow;
         // $borrow->dateReturn = Carbon::now('Asia/Ho_Chi_Minh')->addMonths($time[0]);
         $a = Carbon::now('Asia/Ho_Chi_Minh')->addMonths($time[0]);

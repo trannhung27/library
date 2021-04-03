@@ -196,16 +196,16 @@
       </div> -->
     <!-- search books -->
     <div id="search">
-        <div class="header-search">
+         <div class="header-search">
             &#8212; Tìm kiếm tại đây &#8212;
-        </div>
-        <div class="search">
+         </div>
+         <div class="search">
             <div class="search-book">
-                <input type="text" placeholder="Tìm kiếm từ khóa..." />
-                <button><img src="{{asset('images/search_icon.png')}}" /></button>
+               <input type="text" id = "input_search" placeholder="Tìm kiếm từ khóa..." />
+               <button type="submit" class="send"><img src="{{asset('images/search_icon.png')}}" /></button>
             </div>
             <div class="search-theloai">
-                <select>
+               <select id="category">
                   <option>Thể loại</option>
                   <option>Khoa học</option>
                   <option>Kinh tế</option>
@@ -219,8 +219,7 @@
                </select>
             </div>
         </div>
-    </div>
-
+      </div>
     <!-- end search books -->
     <!-- end about -->
     <!--Books -->
@@ -233,7 +232,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row box">
+            <div class="row box book">
             @foreach($book as $row)
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                     <div class="book-box">
@@ -273,7 +272,7 @@
             <div class="row box">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Khoa học <span class="caret"></span></button>
+                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Khoa học-Công nghệ <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
@@ -321,7 +320,7 @@
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Luận văn <span class="caret"></span></button>
+                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Tiểu thuyết <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
@@ -454,4 +453,44 @@
     <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>
 </body>
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function(){
+        $('.send').click(function(){
+            var input_search = $('#input_search').val();
+            var category = $('#category').val();
+            if(category !='' && input_search!= '')
+            {
+                $.ajax({
+                    url: "{{URL::to('reader/search')}}",
+                    type: 'post',
+                    data:{
+                        _token: CSRF_TOKEN,
+                        input_search:input_search,
+                        category:category,
+                    },
+                    success: function(response){
+                        var books = "";
+                        $.each(response.response, function(index, value){
+                            books += 
+                            "<div class='col-xl-3 col-lg-3 col-md-3 col-sm-12'>"
+                            +   "<div class='book-box'>"
+                            +       "<a href='/library/public/reader/book/"+value.id+"'>"
+                            +       "<figure><img src='{{asset('images/HarryPotter1.png')}}'></figure>"
+                            +       "</a>"
+                            +       "<div class='book-header'>"+value.name+"</div>"
+                            +       "<a href='/library/public/reader/book/"+value.id+"'><button>Xem thêm</button></a>"
+                            +   "</div>"
+                            +"</div>"
+                        });
+                        $('.book').html('').append(books);
+                        
+                    }
+                });
+            }
+           
+        });
+    });
+</script>
+
 </html>

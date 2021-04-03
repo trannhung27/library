@@ -105,13 +105,10 @@
                             <button type="button" class="btn btn-danger btn-sm">Đăng xuất&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></button>
                         </div>
                         <div class="profile-usermenu">
-                            <!-- <div class="usermenu-item"><a href=""><i class="fas fa-bell"></i></i>&ensp;Thông báo</a></div>                    -->
-                            <div class="usermenu-item" id="info-admin"><a href="#info-admin" id="info-admin"><i class="fas fa-user"></i></i>&ensp;Thông tin cá nhân</a></div>
-                            <div class="usermenu-item" id="manage-reader"><a id="manage-reader" href="#manage-reader"><i class="fas fa-users"></i></i>&ensp;Quản lý độc giả</a></div>
-                            <div class="usermenu-item" id="manage-doc"><a id="manage-doc" href="#manage-doc"><i class="fas fa-book"></i></i>&ensp;Quản lý tài liệu</a></div>
-                            <div class="usermenu-item" id="manage-muon-tra"><a id="manage-muon-tra" href="#manage-muon-tra"><i class="fas fa-pen"></i></i>&ensp;Quản lý mượn/trả</a></div>
-            
-                            <div></div>
+                            <div class="usermenu-item"><a id="info-admin" href="#info-admin"><i class="fas fa-user"></i></i>&ensp;Thông tin cá nhân</a></div>
+                            <div class="usermenu-item"><a id="manage-reader" href="#manage-reader"><i class="fas fa-users"></i></i>&ensp;Quản lý độc giả</a></div>
+                            <div class="usermenu-item"><a id="manage-doc" href="#manage-doc"><i class="fas fa-book"></i></i>&ensp;Quản lý tài liệu</a></div>
+                            <div class="usermenu-item"><a id="manage-muon-tra" href="#manage-muon-tra"><i class="fas fa-pen"></i></i>&ensp;Quản lý mượn/trả</a></div>
                         </div>
                     </div>
                 </div>
@@ -160,7 +157,7 @@
                                     <button><i class="fas fa-search"></i></button>
                                     <button style="float: right;"><i class="material-icons">&#xe8ba;</i></button>
                                 </div>
-                                <div class="manage-content">
+                                <div class="manage-content reader">
                                     <table>
                                         <thead>
                                             <td style="width:20%">Mã độc giả</td>
@@ -168,17 +165,20 @@
                                             <td style="width:25%">Số điện thoại</td>
                                             <td>chỉnh sửa</td>
                                         </thead>
+                                        <tbody>
                                         @foreach($reader as $row)
-                                        <tr>
-                                            <td>{{$row->id}}</td>
-                                            <td>{{$row->name}}</td>
-                                            <td>{{$row->phone}} </td>
-                                            <td>
-                                                <span><button class="edit" type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span><button class="delete_{{$row->id}}" id="" type="button" id="delete_reader"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{$row->id}}</td>
+                                                <td>{{$row->name}}</td>
+                                                <td>{{$row->phone}} </td>
+                                                <td>
+                                                    <span><button class="edit" type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
+                                                    <span><button class="delete_{{$row->id}}" id="" type="button" id="delete_reader"><i class="fas fa-trash"></i></button></span>
+                                                </td>
+                                            </tr>
                                         @endforeach
+                                        </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -196,7 +196,7 @@
                                     <button><i class="fas fa-search"></i></button>
                                     <button style="float: right;"><i class="material-icons">&#xe8ba;</i></button>
                                 </div>
-                                <div class="manage-content">
+                                <div class="manage-content document">
                                     <table>
                                         <thead>
                                             <td style="width:15%">Mã sách</td>
@@ -208,34 +208,21 @@
                                             <td style="width:15%">Ngày chỉnh sửa gần nhất</td>
                                             <td>chỉnh sửa</td>
                                         </thead>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>Harry Potter và chiếc cốc lửa</td>
-                                            <td>J.K.R</td>
-                                            <td>NXB Trẻ</td>
-                                            <td>Tiểu thuyết</td>
-                                            <td>3</td>
-                                            <td>20/03/2021</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>Harry Potter và chiếc cốc lửa</td>
-                                            <td>J.K.R</td>
-                                            <td>NXB Trẻ</td>
-                                            <td>Tiểu thuyết</td>
-                                            <td>3</td>
-                                            <td>20/03/2021</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-
-
+                                        <tbody>
+                                            <tr>
+                                                <td>MB-01030</td>
+                                                <td>Harry Potter và chiếc cốc lửa</td>
+                                                <td>J.K.R</td>
+                                                <td>NXB Trẻ</td>
+                                                <td>Tiểu thuyết</td>
+                                                <td>3</td>
+                                                <td>20/03/2021</td>
+                                                <td>
+                                                    <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
+                                                    <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>        
                                     </table>
                                 </div>
                             </div>
@@ -251,7 +238,7 @@
                                 <div class="manage-header-text">
                                     Tài liệu đang được mượn
                                 </div>
-                                <div class="manage-content">
+                                <div class="manage-content dangmuon">
                                     <table>
                                         <thead>
                                             <td style="width:10%">Mã sách</td>
@@ -260,36 +247,28 @@
                                             <td style="width:15%">Ngày mượn</td>
                                             <td style="width:15%">Ngày trả</td>
                                             <td>Tình trạng</td>
+                                            <td>Xóa</td>
 
                                         </thead>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>Đang mượn</td>
-                                            <td>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>Đang mượn</td>
-                                            <td>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>MB-01030</td>
+                                                <td>DG-10234</td>
+                                                <td>harry Potter</td>
+                                                <td>20/03/2021</td>
+                                                <td>20/09/2021</td>
+                                                <td>Đang mượn</td>
+                                                <td>
+                                                    <span class="delete"><button id="delete" type="button"><i class="fas fa-trash"></i></button></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="manage-header-text">
                                     Yêu cầu mượn/gia hạn tài liệu
                                 </div>
-                                <div class="manage-content">
+                                <div class="manage-content borrow">
                                     <div style="font-weight: bold;">Yêu cầu mượn</div>
                                     <table>
                                         <thead>
@@ -301,43 +280,20 @@
                                             <td>Phê duyệt</td>
 
                                         </thead>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td>MB-01030</td>
+                                                <td>DG-10234</td>
+                                                <td>harry Potter</td>
+                                                <td>20/03/2021</td>
+                                                <td>20/09/2021</td>
+                                                <td>
+                                                    <span class="duyet"><button type="button" id="muon" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
+                                                    <span class="da-duyet" hidden>Đã duyệt</span>
+                                                </td>
 
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
-
-                                        </tr>
-
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="manage-content">
@@ -457,54 +413,138 @@
 
 <script type='text/javascript'>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    function muon(){
+            $.ajax({
+                url: "{{URL::to('admin/borrow_return')}}",
+                type:'get',
+                data:{},
+                success: function(response){
+                    
+                    var borrow = "";
+                    $.each(response.response, function(index, value){
+                        borrow += 
+                            "<tr>"
+                            +   "<td>"+value.id_reader+"</td>"
+                            +   "<td>"+value.id_book+"</td>"
+                            +   "<td>"+value.name+"</td>"
+                            +   "<td>"+value.dateBorrow+"</td>"
+                            +   "<td>"+value.dateReturn+"</td>"
+                            +   "<td>"
+                            +       "<span class='duyet'><button data-id_duyet="+ value.id + " type='submit' class='btn btn-success' id='muon' style='font-weight: bold;'>Duyệt</button></span>"
+                            +       "<span class='da-duyet' hidden>Đã duyệt</span>"
+                            +   "</td>"
+                            +"</tr>"
+                    });
+                   
+                    $('.borrow table tbody').html('').append(borrow);
+                }
+            });
+    }
+
+    function tailieu(){
+        $.ajax({
+                url: "{{URL::to('admin/manage_doc')}}",
+                type:'get',
+                data:{},
+                success: function(response){
+                    var reader = "";
+                    $.each(response.response, function(index, value){
+                        reader += 
+                            "<tr>"
+                            +   "<td>"+value.id+"</td>"
+                            +   "<td>"+value.name+"</td>"
+                            +   "<td>"+value.author+"</td>"
+                            +   "<td>"+value.publisher+"</td>"
+                            +   "<td>"+value.category+"</td>"
+                            +   "<td>"+value.amount+"</td>"
+                            +   "<td>20/03/2021</td>"
+                            +   "<td>"
+                            +       "<span class='edit'><button type='button'><i class='fas fa-pen'></i></button>&ensp;</span>"
+                            +       "<span class='delete'><button data-id_book="+ value.id + " type='submit' id='delete_book'><i class='fas fa-trash'></i></button></span>"
+                            +   "</td>"
+                            +"</tr>"
+                    });
+                    $('.document table tbody').html('').append(reader);
+                }
+            });
+    }
+
+    function docgia(){
+            $.ajax({
+                url: "{{URL::to('admin/manage_reader')}}",
+                type:'get',
+                data:{},
+                success: function(response){
+                    var reader = "";
+                    $.each(response.response, function(index, value){
+                        reader += 
+                            "<tr>"
+                            +   "<td>"+value.id+"</td>"
+                            +   "<td>"+value.name+"</td>"
+                            +   "<td>"+value.phone+"</td>"
+                            +   "<td>"
+                            +       "<span><button class='edit' type='button'><i class='fas fa-pen'></i></button>&ensp;</span>"
+                            +       "<span><button class='delete_{{$row->id}}' id='' type='button' id='delete_reader'><i class='fas fa-trash'></i></button></span>"
+                            +   "</td>"
+                            "</tr>"
+                    });
+                    $('.reader table tbody').html('').append(reader);
+                }
+            });
+    }
+
+    function dangmuon(){
+        $.ajax({
+                url: "{{URL::to('admin/dangmuon')}}",
+                type:'get',
+                data:{},
+                success: function(response){
+                    var borrow = "";
+                    $.each(response.response, function(index, value){
+                        borrow += 
+                            "<tr>"
+                            +   "<td>"+value.id_reader+"</td>"
+                            +   "<td>"+value.id_book+"</td>"
+                            +   "<td>"+value.name+"</td>"
+                            +   "<td>"+value.dateBorrow+"</td>"
+                            +   "<td>"+value.dateReturn+"</td>"
+                            +   "<td>Đang mượn</td>"
+                            +   "<td>"
+                            +       "<span class='delete'><button data-id_xoa="+ value.id + " type='submit' id='delete'><i class='fas fa-trash'></i></button></span>"
+                            +   "</td>"
+                            +"</tr>"
+                    });
+                   
+                    $('.dangmuon table tbody').html('').append(borrow);
+                }
+            });
+    }
     
     $(document).ready(function(){
-            
-        $('#quanlydocgia').hide();
-        $('#quanlytailieu').hide();
-        $('#quanlymuontra').hide();
-        $('#thongtincanhan-admin').show();
-        quanlydocgia();
-        quanlytailieu();
-        quanlymuontra();
-        thongtinnguoidung();
-        function thongtinnguoidung()
-        {
-            $('#info-admin').click(function(){
-                $('#quanlydocgia').hide();
-                $('#quanlytailieu').hide();
-                $('#quanlymuontra').hide();
-                $('#thongtincanhan-admin').show();
-            });
-        }
+        //Show thong tin doc gia
+        $('#info-admin').click(function(){
+            $.ajax({
+                url: "{{URL::to('admin/manage_reader')}}",
+                type:'get',
+                data:{},
+                success: function(response){
 
-
-        function quanlymuontra(){
-            $('#manage-muon-tra').click(function(){
-                $('#quanlydocgia').hide();
-                $('#quanlytailieu').hide();
-                $('#quanlymuontra').show();
-                $('#thongtincanhan-admin').hide();
+                }
             });
-        }
+        });
 
-        function quanlytailieu(){
-            $('#manage-doc').click(function(){
-                $('#quanlydocgia').hide();
-                $('#quanlytailieu').show();
-                $('#quanlymuontra').hide();
-                $('#thongtincanhan-admin').hide();
-            });
-        }
+        $('#manage-reader').click(function(){
+            docgia();
+        });
 
-        function quanlydocgia(){
-            $('#manage-reader').click(function(){
-                $('#quanlydocgia').show();
-                $('#quanlytailieu').hide();
-                $('#quanlymuontra').hide();
-                $('#thongtincanhan-admin').hide();
-            });
-        }
+        $('#manage-doc').click(function(){
+            tailieu();
+        });
+
+        $('#manage-muon-tra').click(function(){
+            muon();
+            dangmuon();
+        });
 
         
         // xử lý đổi mật khẩu
@@ -594,6 +634,52 @@
         });
     });
 
+    // Duyệt yêu cầu mượn sách
+    $(document).on('click','#muon',function(){
+        var id = $(this).data('id_duyet');
+        $.ajax({
+            url: "{{URL::to('admin/duyet')}}",
+            type:'post',
+            data:{_token: CSRF_TOKEN, id:id},
+            success: function(response){
+                alert("Đã duyệt yêu cầu mượn thành công");
+                muon();
+                dangmuon();
+            }
+        });
+    });
+
+    // Xóa tài liệu đang được mượn(Người đọc trả sách rồi nên mk xóa)
+    $(document).on('click','#delete',function(){
+        var id = $(this).data('id_xoa');
+        
+        $.ajax({
+            url: "{{URL::to('admin/delete')}}",
+            type:'post',
+            data:{_token: CSRF_TOKEN, id:id},
+            success: function(response){
+                alert("Đã xóa");
+                dangmuon();
+            }
+        });
+    });
+
+    // Xóa tài liệu
+    $(document).on('click','#delete_book',function(){
+        var id = $(this).data('id_book');
+        alert(id);
+        $.ajax({
+            url: "{{URL::to('admin/delete_book')}}",
+            type:'post',
+            data:{_token: CSRF_TOKEN, id:id},
+            success: function(response){
+                alert("Đã xóa");
+                tailieu();
+                muon();
+                dangmuon();
+            }
+        });
+    });
 </script> 
 
 

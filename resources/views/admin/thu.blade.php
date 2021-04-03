@@ -34,7 +34,7 @@
 <body class="main-layout home_page">
     <!-- loader  -->
     <div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+        <div class="loader"><img src="{{asset('images/loading.gif')}}" alt="#" /></div>
     </div>
     <!-- end loader -->
     <!-- header -->
@@ -47,7 +47,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                                    <a href="index.html"><img src="{{asset('images/logo.png')}}" alt="logo"></a>
                                 </div>
                             </div>
                         </div>
@@ -63,12 +63,13 @@
                                         <li><a href="library.html">Thư viện</a></li>
                                         <li><a href="contact.html">Liên hệ</a></li>
                                         <li class="mean-last">
-                                            <a href="#search"><img src="images/search_icon.png" alt="#" /></a>
+                                            <a href="#search"><img src="{{asset('images/search_icon.png')}}" alt="#" /></a>
                                         </li>
                                         <li class="mean-last">
                                             <a href="#">
-                                                <img src="images/top-icon.png" alt="#" />
-                                                <span id="#" style="font-size: 13px;" title="Đăng xuất">Chi Cute&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></span>
+                                                <input type="hidden" id="iduser" value="{{Auth::user()->id}}">
+                                                <img src="{{asset('images/top-icon.png')}}" alt="#" />
+                                                <span style="font-size: 13px;" title="Đăng xuất">{{Auth::user()->name}}&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></span>
 
                                             </a>
                                         </li>
@@ -93,230 +94,36 @@
                 <div class="col-md-3">
                     <div class="profile-sidebar">
                         <div class="profile-userpic">
-                            <img src="images/user.png" class="img-responsive" alt="Thông tin cá nhân">
+                            <img src="{{asset('images/user.png')}}" class="img-responsive" alt="Thông tin cá nhân">
                         </div>
                         <div class="profile-usertitle">
-                            <div class="profile-usertitle-name">Nguyễn Văn A</div>
-                            <div class="profile-usertitle-job">Admin: <strong style="font-weight: bold;">A03</strong></div>
+                            <div class="profile-usertitle-name">{{Auth::user()->name}}</div>
+                            <div class="profile-usertitle-job">Admin: <strong style="font-weight: bold;">{{Auth::user()->id}}</strong></div>
                         </div>
                         <div class="profile-userbuttons">
                             <button type="button" class="btn btn-success btn-sm" id="edit-pass">Chỉnh sửa</button>
                             <button type="button" class="btn btn-danger btn-sm">Đăng xuất&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></button>
                         </div>
                         <div class="profile-usermenu">
-                            <!-- <div class="usermenu-item"><a href=""><i class="fas fa-bell"></i></i>&ensp;Thông báo</a></div>                    -->
-                            <div class="usermenu-item" id="info-admin">
-                                <a href=""></a><i class="fas fa-user"></i></i>&ensp;Thông tin cá nhân</a>
-                            </div>
-                            <div class="usermenu-item" id="manage-reader"><a id="manage-reader" href="#"><i class="fas fa-users"></i></i>&ensp;Quản lý độc giả</a></div>
-                            <div class="usermenu-item" id="manage-doc"><a href=""><i class="fas fa-book"></i></i>&ensp;Quản lý tài liệu</a></div>
-                            <div class="usermenu-item" id="manage-muon-tra"><a href=""><i class="fas fa-pen"></i></i>&ensp;Quản lý mượn/trả</a></div>
-                            <!-- <div class="usermenu-item"><a href=""><i class="fas fa-bar-chart"></i></i>&ensp;Thống kê dữ liệu</a></div> -->
-                            <div></div>
+                            <div class="usermenu-item"><a id="info-admin" href="#info-admin"><i class="fas fa-user"></i></i>&ensp;Thông tin cá nhân</a></div>
+                            <div class="usermenu-item"><a id="manage-reader" href="#manage-reader"><i class="fas fa-users"></i></i>&ensp;Quản lý độc giả</a></div>
+                            <div class="usermenu-item"><a id="manage-doc" href="#manage-doc"><i class="fas fa-book"></i></i>&ensp;Quản lý tài liệu</a></div>
+                            <div class="usermenu-item"><a id="manage-muon-tra" href="#manage-muon-tra"><i class="fas fa-pen"></i></i>&ensp;Quản lý mượn/trả</a></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9">
-                    Thông tin người dùng
-                    <div class="profile-content" id="thongtincanhan-admin">
-                        <div class="prof-title">
-                            <h3>&#45;&#45;Thông tin cá nhân&#45;&#45;</h3>
-                        </div>
-                        <div class="main-profile-content">
-                            <table>
-                                <tr>
-                                    <td style="width:20%;">Họ tên</td>
-                                    <td>Nguyễn Văn A</td>
-                                </tr>
-                                <tr>
-                                    <td>Mã thành viên</td>
-                                    <td>18022222</td>
-                                </tr>
-                                <tr>
-                                    <td>Số điện thoại</td>
-                                    <td>012345678</td>
-                                    <td><button id="edit-sdt"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                </svg></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>nguyenvana@gmail.com</td>
-                                    <td><button id="edit-email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                </svg></button></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Quản lý độc giả -->
-                    <div class="profile-content" id="quanlydocgia">
-                        <div class="prof-title">
-                            <h3>&#45;&#45;Quản lý độc giả&#45;&#45;</h3>
-                        </div>
-                        <div class="main-profile-content">
-                            <div class="manage">
-                                <div class="manage-header">
-                                    <input type="text" placeholder="Tìm kiếm độc giả" />
-                                    <button><i class="fas fa-search"></i></button>
-                                    <button style="float: right;"><i class="material-icons">&#xe8ba;</i></button>
-                                </div>
-                                <div class="manage-content">
-                                    <table>
-                                        <thead>
-                                            <td style="width:20%">Mã độc giả</td>
-                                            <td style="width:35%">Họ tên</td>
-                                            <td style="width:25%">Số điện thoại</td>
-                                            <td>chỉnh sửa</td>
-                                        </thead>
-                                        <tr>
-                                            <td>DG-10234</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>0123456789</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>DG-10234</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>0123456789</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>DG-10234</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>0123456789</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>DG-10234</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>0123456789</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Quản lý tài liệu -->
-                    <div class="profile-content" id="quanlytailieu">
-                        <div class="prof-title">
-                            <h3>&#45;&#45;Quản lý Tài liệu&#45;&#45;</h3>
-                        </div>
-                        <div class="main-profile-content">
-                            <div class="manage">
-                                <div class="manage-header">
-                                    <input type="text" placeholder="Tìm kiếm tài liệu" />
-                                    <button><i class="fas fa-search"></i></button>
-                                    <button style="float: right;"><i class="material-icons">&#xe8ba;</i></button>
-                                </div>
-                                <div class="manage-content">
-                                    <table>
-                                        <thead>
-                                            <td style="width:15%">Mã sách</td>
-                                            <td style="width:20%">Tên sách</td>
-                                            <td style="width:10%">Tác giả</td>
-                                            <td style="width:10%">NXB</td>
-                                            <td style="width:10%">Thể loại</td>
-                                            <td style="width:5%">Số lượng</td>
-                                            <td style="width:15%">Ngày chỉnh sửa gần nhất</td>
-                                            <td>chỉnh sửa</td>
-                                        </thead>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>Harry Potter và chiếc cốc lửa</td>
-                                            <td>J.K.R</td>
-                                            <td>NXB Trẻ</td>
-                                            <td>Tiểu thuyết</td>
-                                            <td>3</td>
-                                            <td>20/03/2021</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>Harry Potter và chiếc cốc lửa</td>
-                                            <td>J.K.R</td>
-                                            <td>NXB Trẻ</td>
-                                            <td>Tiểu thuyết</td>
-                                            <td>3</td>
-                                            <td>20/03/2021</td>
-                                            <td>
-                                                <span class="edit"><button type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Quản lý mượn trả -->
                     <div class="profile-content" id="quanlymuontra">
                         <div class="prof-title">
                             <h3>&#45;&#45;Quản lý mượn trả&#45;&#45;</h3>
                         </div>
                         <div class="main-profile-content">
                             <div class="manage">
-                                <div class="manage-header-text">
-                                    Tài liệu đang được mượn
-                                </div>
-                                <div class="manage-content">
-                                    <table>
-                                        <thead>
-                                            <td style="width:10%">Mã sách</td>
-                                            <td style="width:10%">Mã người mượn</td>
-                                            <td style="width:30%">tên sách</td>
-                                            <td style="width:15%">Ngày mượn</td>
-                                            <td style="width:15%">Ngày trả</td>
-                                            <td>Tình trạng</td>
-
-                                        </thead>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>Đang mượn</td>
-                                            <td>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>Đang mượn</td>
-                                            <td>
-                                                <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                
                                 <div class="manage-header-text">
                                     Yêu cầu mượn/gia hạn tài liệu
                                 </div>
-                                <div class="manage-content">
+                                <div class="manage-content borrow">
                                     <div style="font-weight: bold;">Yêu cầu mượn</div>
                                     <table>
                                         <thead>
@@ -328,86 +135,20 @@
                                             <td>Phê duyệt</td>
 
                                         </thead>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
+                                        <tbody>
+                                            <tr>
+                                                <td>MB-01030</td>
+                                                <td>DG-10234</td>
+                                                <td>harry Potter</td>
+                                                <td>20/03/2021</td>
+                                                <td>20/09/2021</td>
+                                                <td>
+                                                    <span class="duyet"><button type="button" id="muon" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
+                                                    <span class="da-duyet" hidden>Đã duyệt</span>
+                                                </td>
 
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/09/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
-
-                                        </tr>
-
-                                    </table>
-                                </div>
-                                <div class="manage-content">
-                                    <div style="font-weight: bold;">Yêu cầu gia hạn thêm thời gian trả</div>
-                                    <table>
-                                        <thead>
-                                            <td style="width:12%;">Độc giả</td>
-                                            <td style="width:12%;">Mã sách</td>
-                                            <td style="width:26%;">Tên sách</td>
-                                            <td style="width:8%;">gia hạn thêm (tháng)</td>
-                                            <td style="width:16%;">Ngày hẹn trả ban đầu</td>
-                                            <td style="width:16%;">Ngày hẹn trả mới</td>
-                                            <td>Phê duyệt</td>
-
-                                        </thead>
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>1</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/03/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
-
-                                        </tr>
-
-                                        <tr>
-                                            <td>MB-01030</td>
-                                            <td>DG-10234</td>
-                                            <td>harry Potter</td>
-                                            <td>1</td>
-                                            <td>20/03/2021</td>
-                                            <td>20/03/2021</td>
-                                            <td>
-                                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
-                                                <span class="da-duyet" hidden>Đã duyệt</span>
-                                            </td>
-
-                                        </tr>
-
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -419,28 +160,9 @@
     </div>
     <!-- end trang cá nhân -->
 
-    <!-- form Chỉnh sửa mật khẩu, email, sđt-->
-    <div class="form-edit" id="form-edit-pass">
-        <div class="dialog-background"></div>
-
-        <div class="form-box">
-            <div class="form-edit-header">
-                <h4>Đổi mật khẩu</h4>
-                <button class="edit-close">&times;</button>
-            </div>
-            <div class="edit-content">
-                Mật khẩu cũ:
-                <div><input type="password" class="oldpass" placeholder="" /></div>
-                Mật khẩu mới:
-                <div><input type="password" class="newpass" placeholder="" /></div>
-            </div>
-            <div class="form-edit-footer"><button>Submit</button></div>
-        </div>
-
-    </div>
+    
     <div class="form-edit" id="form-edit-sdt">
         <div class="dialog-background"></div>
-
         <div class="form-box">
             <div class="form-edit-header">
                 <h4>Đổi số điện thoại</h4>
@@ -448,31 +170,15 @@
             </div>
             <div class="edit-content">
                 Nhập số điện thoại mới:
-                <div><input type="" placeholder="" /></div>
+                <div><input type="phone" class="newphone" placeholder="" /></div>
                 Mật mã xác nhận:
-                <div><input type="" placeholder="" /></div>
+                <div><input type="phone" class="verification" placeholder="" /></div>
             </div>
-            <div class="form-edit-footer"><a href="user.html"><button>Submit</button></a></div>
+            <div class="form-edit-footer" id="changephone"><button>Submit</button></div>
         </div>
 
     </div>
-    <div class="form-edit" id="form-edit-email">
-        <div class="dialog-background"></div>
-        <div class="form-box">
-            <div class="form-edit-header">
-                <h4>Đổi email</h4>
-                <button class="edit-close">&times;</button>
-            </div>
-            <div class="edit-content">
-                Nhập email mới:
-                <div><input type="" placeholder="" /></div>
-                Nhập mã xác nhận:
-                <div><input type="" placeholder="" /></div>
-            </div>
-            <div class="form-edit-footer"><a href="user.html"><button>Submit</button></a></div>
-        </div>
-
-    </div>
+    
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
@@ -486,51 +192,55 @@
 
 <script type='text/javascript'>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        
     
     $(document).ready(function(){
-            
-        $('#quanlydocgia').hide();
-        $('#quanlytailieu').hide();
-        $('#quanlymuontra').hide();
-        $('#thongtincanhan-admin').show();
-        quanlydocgia();
-
-        // xử lý đổi mật khẩu
-        $('#changepass').click(function(){
-            var iduser = $('#iduser').val();
-            var oldpass = $('.oldpass').val();
-            var newpass = $('.newpass').val();
-            if(iduser != '' && oldpass != '' && newpass != ''){
-                $.ajax({
-                    url: "{{URL::to('admin/changepass')}}",
-                    type: 'post',
-                    data: {_token: CSRF_TOKEN, iduser: iduser, oldpass: oldpass, newpass:newpass},
-                    success: function(response){
-                        if(response == 1)
-                        {
-                            alert("Đã đổi mật khẩu thành công");
-                            $('.form-edit').hide();
-                        }
-                        else {
-                            alert("Vui lòng nhập lại mật khẩu");
-                        }
-                    }
-                });
-            }
-            else{
-                alert('Fill all fields');
-            }
+        //Show thong tin doc gia
+        $('#manage-muon-tra').click(function(){
+            $.ajax({
+                url: "{{URL::to('admin/borrow_return')}}",
+                type:'get',
+                data:{},
+                success: function(response){
+                    var borrow = "";
+                    $.each(response.response, function(index, value){
+                        borrow += 
+                            "<tr>"
+                            +   "<td>"+value.id_reader+"</td>"
+                            +   "<td>"+value.id_book+"</td>"
+                            +   "<td>"+value.name+"</td>"
+                            +   "<td>"+value.dateBorrow+"</td>"
+                            +   "<td>"+value.dateReturn+"</td>"
+                            +   "<td>"
+                            // +       "<span class='duyet'><button data-id_xoa="+ value.id + " type='submit' class='btn btn-success' id='muon' style='font-weight: bold;'>Duyệt</button></span>"
+                            +       "<span class='duyet'><button type='button' id='muon' class='btn btn-success' style='font-weight: bold;'>Duyệt</button></span>"
+                            +       "<span class='da-duyet' hidden>Đã duyệt</span>"
+                            +   "</td>"
+                            +"</tr>"
+                    });
+                   
+                    $('.borrow table tbody').html('').append(borrow);
+                }
+            });
         });
+        // $('#muon').click(function(){
+        //     var id = $(this).data('id_xoa');
+        //     alert(id);
+        //     // $.ajax({
+        //     //     url: "{{URL::to('admin/borrow_return')}}",
+        //     //     type:'get',
+        //     //     data:{},
+        //     //     success: function(response){
+                    
+        //     //     }
+        //     // });
+        // });
+
+        
     });
 
-    function quanlydocgia(){
-        $('#manage-reader').click(function(){
-            $('#quanlydocgia').show();
-            $('#quanlytailieu').hide();
-            $('#quanlymuontra').hide();
-            $('#thongtincanhan-admin').hide();
-        });
-    }
+    
+
 </script> 
 
 

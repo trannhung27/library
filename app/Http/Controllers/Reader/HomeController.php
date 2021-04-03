@@ -20,5 +20,19 @@ class HomeController extends Controller
         $book = DB::table('books')->get();
         return view("reader.thu",['book'=>$book]);
     }
+
+    public function search(Request $request){
+        $a = "";
+        $input_search = $request->input('input_search');
+        $category = $request->input('category');
+        $book = DB::table('books')->where('name','like','%'.$input_search.'%')->get();
+        return response(['response'=>$book]);
+        // foreach($book as $row)
+        // {
+        //     $a = $row->name;
+        // }
+        // return response()->json([[$a]]);
+    }
 }
+
 
