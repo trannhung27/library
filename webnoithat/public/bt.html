@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <form id='submit-form'>
+        <button type='submit'>submit</button>
+    </form>
+</body>
+
+<script>
+    $(document).ready(function($) {
+        $(document).on('submit', '#submit-form', function(event) {
+            event.preventDefault();
+
+            alert('page did not reload');
+        });
+    });
+</script>
+
+</html>

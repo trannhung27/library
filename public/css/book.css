@@ -10,16 +10,17 @@
     color: black;
     margin-top: 90px;
 }
+
 .header-padding {
     height: 40px;
     background-color: #B32137;
     margin-right: 15px;
     margin-left: 15px;
 }
+
 .info-book {
-    
     height: 450px;
-    background-color:#ffffff;
+    background-color: #ffffff;
     display: flex;
     flex-direction: row;
     padding-left: 25px;
@@ -29,16 +30,19 @@
     margin-right: 15px;
     margin-left: 15px;
 }
+
 .info-book img {
     flex: 1;
     margin: 25px;
     /* height: 400px; */
 }
+
 .info-book .info {
     flex: 2;
     margin: 25px;
     padding-left: 50px;
 }
+
 .info-book .like {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -49,18 +53,21 @@
     color: #ffffff;
     border-radius: 10px;
 }
-.info-book .like:hover{
+
+.info-book .like:hover {
     background-color: #d1112e;
     box-shadow: 2px 2px 2px #B32137;
-    
 }
-.info > p {
+
+.info>p {
     margin-top: 5px;
 }
-.info p strong a{
+
+.info p strong a {
     font-weight: 500;
     color: #337ab7;
 }
+
 .info .info-button button {
     margin-top: 30px;
     margin-right: 20px;
@@ -72,23 +79,25 @@
     border-radius: 10px;
     text-transform: uppercase;
 }
-.info .info-button button:hover{
+
+.info .info-button button:hover {
     background-color: #aa2b8d;
     box-shadow: 2px 2px 2px #81256c;
 }
+
 .info-book .review {
     margin-top: 20px;
 }
+
 .info-book .review span {
     color: rgb(248, 193, 20);
 }
-.info-book .review span:hover{
+
+.info-book .review span:hover {
     cursor: pointer;
 }
 
-.info-b
-
-.a-book .description-book h3{
+.info-b .a-book .description-book h3 {
     height: 40px;
     color: #ffffff;
     background-color: #B32137;
@@ -96,7 +105,8 @@
     padding-left: 25px;
     border-radius: 5px;
 }
-.description-book{
+
+.description-book {
     margin-top: 10px;
     /* border: 1px solid gray; */
     border-radius: 5px;
@@ -104,6 +114,7 @@
     margin-right: 15px;
     margin-left: 15px;
 }
+
 .description-book p {
     padding-top: 30px;
     padding-left: 30px;
@@ -111,11 +122,13 @@
     text-align: justify;
     padding-bottom: 50px;
 }
+
 .a-book .comment {
     margin-top: 50px;
     padding: 0;
 }
-.comment h3{
+
+.comment h3 {
     background-color: #B32137;
     color: #ffffff;
     font-size: 20px;
@@ -126,4 +139,179 @@
     line-height: 50px;
     margin-right: 15px;
     margin-left: 15px;
+}
+
+.a-book {
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    /* position: absolute; */
+    /* top: 90px;
+    left: 300px;
+    right: 300px; */
+    /* height: calc(100% - 90px); */
+    margin-right: auto;
+    margin-left: auto;
+    color: black;
+    margin-top: 90px;
+}
+
+.header-padding {
+    height: 40px;
+    background-color: #B32137;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.info-book {
+    height: 450px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    padding-left: 25px;
+    padding-right: 25px;
+    /* border: 1px solid gray; */
+    border-radius: 5px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.info-book img {
+    flex: 1;
+    margin: 25px;
+    /* height: 400px; */
+}
+
+.info-book .info {
+    flex: 2;
+    margin: 25px;
+    padding-left: 50px;
+}
+
+.info-book .like {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #B32137;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.info-book .like:hover {
+    background-color: #d1112e;
+    box-shadow: 2px 2px 2px #B32137;
+}
+
+.info>p {
+    margin-top: 5px;
+}
+
+.info p strong a {
+    font-weight: 500;
+    color: #337ab7;
+}
+
+.info .info-button button {
+    margin-top: 30px;
+    margin-right: 20px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #81256c;
+    color: #ffffff;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.info .info-button button:hover {
+    background-color: #aa2b8d;
+    box-shadow: 2px 2px 2px #81256c;
+}
+
+
+/* ===================================đánh giá sao================================================== */
+
+.review {
+    margin-top: 20px;
+}
+
+.review .checked {
+    color: rgb(240, 240, 46);
+}
+
+.review:hover {
+    cursor: pointer;
+}
+
+
+/* ===================================đánh giá sao================================================== */
+
+.a-book .description-book h3 {
+    height: 40px;
+    color: #ffffff;
+    background-color: #B32137;
+    line-height: 40px;
+    padding-left: 25px;
+    border-radius: 5px;
+}
+
+.description-book {
+    margin-top: 10px;
+    /* border: 1px solid gray; */
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.description-book p {
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: justify;
+    padding-bottom: 50px;
+}
+
+.a-book .comment {
+    margin-top: 50px;
+    padding: 0;
+}
+
+.comment h3 {
+    background-color: #B32137;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    border-radius: 5px;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+
+/* chapter */
+
+.chapter {
+    width: calc(100% - 60px);
+    height: 30px;
+    /* border: 1px solid gray;
+    box-shadow: 1px 1px 1px gray; */
+    line-height: 30px;
+    margin: 0px 30px;
+    color: rgb(29, 172, 172);
+}
+
+.chapter:hover {
+    text-decoration: underline solid 1px rgb(29, 172, 172);
+    background-color: #f5f5f5;
+}
+
+.chapter:visited {
+    color: black;
+}
+
+.description-book {
+    padding-bottom: 25px;
 }

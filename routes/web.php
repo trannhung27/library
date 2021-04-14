@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/index','App\Http\Controllers\SignupController@index');
+Route::get('/index','App\Http\Controllers\IndexController@index');
 Route::post('/addUser', 'App\Http\Controllers\SignupController@addUser');
 Route::post('/login', 'App\Http\Controllers\LoginController@login');
+Route::post('/logout', 'App\Http\Controllers\LogoutController@Logout');
+
 
 Route::group(['prefix'=>'reader'],function(){
+
     Route::get('/home', 'App\Http\Controllers\Reader\HomeController@home');
     Route::get('/book/{id}', 'App\Http\Controllers\Reader\BookController@book');
     Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');
@@ -31,7 +34,19 @@ Route::group(['prefix'=>'reader'],function(){
     Route::get('/contact', 'App\Http\Controllers\Reader\ContactController@contact');
     Route::post('/card', 'App\Http\Controllers\Reader\BookController@card');
     Route::post('/muonsach', 'App\Http\Controllers\Reader\BookController@muonsach');
+    Route::post('/checkrequest', 'App\Http\Controllers\Reader\BookController@checkrequest');
     Route::post('/search', 'App\Http\Controllers\Reader\HomeController@search');
+    Route::post('/check', 'App\Http\Controllers\Reader\HomeController@check');
+    Route::get('/chapter/{id}', 'App\Http\Controllers\Reader\ChapterController@showChapter');
+    Route::post('/listchapter', 'App\Http\Controllers\Reader\BookController@listchapter');
+    Route::post('/chapter_content', 'App\Http\Controllers\Reader\ChapterController@chapter_content');
+    Route::post('/unseen_notification', 'App\Http\Controllers\Reader\BookController@unseen_notification');
+    Route::post('/notification', 'App\Http\Controllers\Reader\BookController@notification');
+    Route::get('/information', 'App\Http\Controllers\Reader\InformationController@showInfo');
+
+    Route::post('/changepass', 'App\Http\Controllers\Reader\InformationController@changepass');
+    Route::post('/changephone', 'App\Http\Controllers\Reader\InformationController@changephone');
+    Route::post('/changeemail', 'App\Http\Controllers\Reader\InformationController@changeemail');
 });
 
 Route::group(['prefix'=>'admin'],function(){
@@ -46,9 +61,7 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/dangmuon', 'App\Http\Controllers\Admin\AdminController@dangmuon');
     Route::post('/delete', 'App\Http\Controllers\Admin\AdminController@delete');
     Route::post('/delete_book', 'App\Http\Controllers\Admin\AdminController@delete_book');
-   
-    Route::get('/thu', 'App\Http\Controllers\Admin\AdminController@thu');
-
+    Route::post('/add_book', 'App\Http\Controllers\Admin\AdminController@add_book');
 });
 Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');
 

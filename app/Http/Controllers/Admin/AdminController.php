@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 
 class AdminController extends Controller
 {
@@ -78,14 +79,11 @@ class AdminController extends Controller
         return response(['response'=>$borrow]);
     }
 
-    public function thu(){
-        return view("admin.thu");
-    }
-
     public function duyet(Request $request){
         $id = $request->input('id');
         $duyet = Borrow_return::find($id);
         $duyet->status = "Đã được duyệt";
+        $duyet->formMode = "1";
         $duyet->save();
     }
 
@@ -118,7 +116,52 @@ class AdminController extends Controller
         
     }
 
-    
+    public function add_book(Request $request)
+    {
+        $name = $request->input('name');
+        $category = $request->input('category');
+        $author = $request->input('author');
+        $description = $request->input('description');
+        $amount = $request->input('amount');
+        $publishYear = $request->input('publishYear');
+        $publisher = $request->input('publisher');
+        
+        
+        $add_book = new Book();
+        $add_book->name = "a";
+        $add_book->publisher = "a";
+        $add_book->publishYear = 20;
+        $add_book->description = "a";
+        $add_book->money = 2000;
+        $add_book->category = "a";
+        $add_book->author = "a";
+        $add_book->amount = 20;
 
+
+        $file = $request->input('add_image');
+        $file1 = $request->file($file);
+        // $file1 = $file->getClientOriginalName();
+        return response()->json([[$file1]]);
+
+        // if ($request->hasFile('add_image')) {
+        //     $file1 = $request->file('add_image');
+        //     $file = $file1->getClientOriginalName();
+        // }
+        // else{
+        //     return response()->json([[1]]);
+        // }
+        // $request->file('add_image')->move('image_book',$file1->getClientOriginalName());
+        // $add_book->image = $file1->getClientOriginalName();
+
+        // $hinhthe = $request->file('add_image');
+		// $gethinhthe = time().'_'.$hinhthe->getClientOriginalName();
+		// $destinationPath = public_path('image_book');
+		// $hinhthe->move($destinationPath, $gethinhthe);
+
+        $add_book->image = "aaa";
+        $add_book->save();
+    }
 }
+
+
 

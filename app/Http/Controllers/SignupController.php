@@ -8,10 +8,6 @@ use App\Http\Requests;
 
 class SignupController extends Controller
 {
-    function index()
-    {
-        return view("index");
-    }
 
     public function addUser(Request $request){
 

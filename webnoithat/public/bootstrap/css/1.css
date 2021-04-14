@@ -1,0 +1,54 @@
+.nav>li {
+    float: left;
+    margin-right: 15px;
+}
+
+.nav>li>a {
+    text-transform: uppercase;
+    color: red;
+}
+
+.nav li {
+    position: relative;
+    list-style: none;
+}
+
+.nav li a {
+    padding: 10px;
+    line-height: 20px;
+    display: inline-block;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 200px;
+    background-color: #eee;
+    padding: 5px 20px;
+}
+
+.donmua:hover>.sub-menu {
+    display: block;
+}
+
+.nav>li>.sub-menu {
+    top: 40px;
+    left: 0;
+}
+
+
+/* .a {
+    display: none;
+} */
+
+
+/* .a {
+    display: none;
+    width: 200px;
+    padding: 5px 20px;
+}
+
+.paragraph-container:hover>.a {
+    display: block;
+} */

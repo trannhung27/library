@@ -1,0 +1,569 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+h2 {
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    margin-top: 40px;
+}
+
+h1 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20%;
+}
+
+h3 {
+    font-weight: 500;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+h4 {
+    color: #eec451;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+h5 {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h6 {
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.topheader1 {
+    width: 100%;
+    height: 20px;
+}
+
+.menu li a {
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    margin-left: 15px;
+}
+
+.menu {
+    width: 100%;
+    margin-top: 48px;
+    position: relative;
+    margin-left: 20%;
+}
+
+.menu a:hover {
+    font-weight: 600;
+    color: #eec451;
+    text-decoration: none;
+}
+
+.loginin i {
+    color: white;
+}
+
+.info a {
+    color: white;
+    text-decoration: none;
+}
+
+.donmua i:hover {
+    color: #eec451;
+}
+
+.info a:hover {
+    color: #eec451;
+}
+
+.donmua {
+    position: absolute;
+    right: 350px;
+}
+
+.info {
+    position: absolute;
+    right: 100px;
+}
+
+.loginin li {
+    list-style: none;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 600px;
+    background-color: #eee;
+    padding: 5px 20px;
+}
+
+.donmua:hover>.sub-menu {
+    display: block;
+}
+
+.info:hover>.sub-menu {
+    display: block;
+}
+
+.sub-menu li a {
+    color: #000;
+    text-decoration: none;
+}
+
+.sub-menu li:hover {
+    color: #eec451;
+}
+
+.img-fluid {
+    background-image: url("bootstrap/image/blog-featured-diabetes-20180406-1330.jpg");
+}
+
+.ten_san_pham p {
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+
+.ten_san_pham {
+    text-align: center;
+}
+
+.gia_san_pham {
+    text-align: center;
+    font-size: 20px;
+    color: rgb(220, 20, 30);
+}
+
+.gia_san_pham_km p {
+    /* text-align: center; */
+    font-size: 20px;
+    color: rgb(220, 20, 30);
+    margin-left: 11%;
+    display: inline-block;
+}
+
+.timkiem {
+    /* margin-top: 100px; */
+    background-image: url('../image/nen.jpg');
+    height: 100vh;
+    background-size: cover;
+    margin-bottom: 50px;
+}
+
+#carouselExampleCaptions {
+    margin-bottom: 50px;
+}
+
+.main-agileits {
+    padding-top: 8%;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-w3-agile {
+    background: rgba(4, 4, 4, 0.56);
+    padding: 60px 40px;
+}
+
+.noidung {
+    border: 1px dashed white;
+    padding-bottom: 25%;
+}
+
+a h1 {
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    opacity: 1;
+}
+
+.card-img-overlay a {
+    text-decoration: none;
+}
+
+.baohanh {
+    font-size: 15px;
+    margin: 0px 15% 0% 15%;
+    padding-left: 2%;
+    color: white;
+    background-color: #eec451;
+}
+
+.sanpham a {
+    text-decoration: none;
+}
+
+.btn-addproduct {
+    position: absolute;
+    right: 18px;
+    margin-top: 10px;
+}
+
+
+/* -------------------------------------------------
+    ---------------------Thong tin ------------------
+    ------------------------------------------------- */
+
+.thongtin {
+    background-image: linear-gradient(to bottom, rgba(77, 77, 77, 0.56), rgba(77, 77, 77, 0.56)), url('../image/thongtin.jpg');
+}
+
+.diamond {
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+    margin-top: 20%;
+    transform: rotate(45deg);
+    margin-left: 37%;
+}
+
+.diamond i {
+    color: black;
+}
+
+footer {
+    background-color: rgb(49, 48, 48);
+    padding: 50px 0 0 0;
+}
+
+.td_footer {
+    font-size: 15px;
+    margin-bottom: 29px;
+    color: #eec451;
+    font-weight: 500;
+}
+
+.diachi h6 i {
+    width: 10px;
+    color: #eec451;
+    margin-right: 18px;
+}
+
+.diachi p {
+    color: #eec451;
+}
+
+.diachi img {
+    margin-bottom: 30px;
+    width: 70%;
+}
+
+.footer__copyright {
+    padding: 20px 0;
+    color: rgb(185, 179, 179);
+    background-color: rgb(32, 32, 32);
+}
+
+
+/* ------------------------Dơn mua ------------------------------ */
+
+.d-menu li {
+    list-style: none;
+}
+
+.d-menu li i {
+    margin-right: 10px;
+}
+
+.d-menu li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.d-menu .menu-icon {
+    margin-right: 15px;
+}
+
+.d-menu a:hover,
+.d-menu .sub-menu a:hover {
+    color: #eec451;
+}
+
+.sub-menu {
+    margin-top: 20px;
+}
+
+.d-menu .sub-menu a {
+    font-size: 16px;
+    text-decoration: none;
+    padding-left: 15px;
+    color: #464444;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+
+.icon-dropdow {
+    color: #131212;
+    position: absolute;
+    right: 10px;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.menu-icon {
+    cursor: pointer;
+}
+
+.d-menu .sub-menu {
+    display: none;
+}
+
+.d-flex a {
+    color: #131212;
+    text-decoration: none;
+    text-align: center;
+}
+
+.d-flex a:hover {
+    color: #eec451;
+}
+
+
+/* ------------------------Quản lý vận chuyển------------------------------ */
+
+
+/* ------------------------Thêm sản phẩm------------------------------ */
+
+label {
+    font-size: 15px;
+    color: #131212;
+}
+
+.center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-input {
+    width: 150px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #555;
+}
+
+.form-input input {
+    display: none;
+}
+
+.form-input label {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #333;
+    color: #fff;
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: Uppercase;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form-input img {
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+}
+
+.map {
+    font-size: 25px;
+    color: rgb(0, 174, 255);
+}
+
+
+/* -------------------------------Đơn mua-------------------------------- */
+
+.user_info .user_avatar {
+    width: 50px;
+    height: 50px;
+    float: left;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #eee;
+}
+
+.user_info .user_avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user_info .user_meta {
+    margin-left: 60px;
+    min-height: 60px;
+    align-items: center;
+    display: flex;
+    color: initial;
+}
+
+.user_info .user_name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.user_info a {
+    text-decoration: none;
+}
+
+.user_info ul li {
+    list-style: none;
+}
+
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 15px;
+    margin-left: -20px;
+    padding: 0 10px;
+}
+
+.nav-sidebar .nav-item {
+    display: block;
+    width: 100%;
+}
+
+.sidebar .nav-link {
+    font-weight: normal;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px dashed #eee;
+}
+
+.sidebar .nav-link.active {
+    font-weight: bold;
+}
+
+.sidebar .nav-link:hover {
+    color: #000;
+    background: #f1f1f1;
+}
+
+.sidebar .nav-link svg {
+    margin-right: 10px;
+    color: #666;
+}
+
+.media-body p {
+    font-size: 15px;
+}
+
+@media (min-width:640px) {
+    .nav-item a {
+        font-size: 12px;
+    }
+}
+
+@media (min-width:960px) {
+    .nav-item a {
+        font-size: 15px;
+    }
+}
+
+.buttons_added {
+    opacity: 1;
+    display: inline-block;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.is-form {
+    overflow: hidden;
+    position: relative;
+    background-color: #f9f9f9;
+    height: 2.2rem;
+    width: 1.9rem;
+    padding: 0;
+    text-shadow: 1px 1px 1px #fff;
+    border: 1px solid #ddd;
+}
+
+.is-form:focus,
+.input-text:focus {
+    outline: none;
+}
+
+.is-form.minus {
+    border-radius: 4px 0 0 4px;
+}
+
+.is-form.plus {
+    border-radius: 0 4px 4px 0;
+}
+
+.input-qty {
+    background-color: #fff;
+    height: 2.2rem;
+    text-align: center;
+    font-size: 1rem;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 0;
+    border-right: 0;
+    padding: 0;
+}
+
+.input-qty::-webkit-outer-spin-button,
+.input-qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* COMMENT */
+
+.cmt-top {
+    margin-top: 20px;
+}
+
+.cmt-img {
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    float: left;
+    overflow: hidden;
+    background: #eee;
+}
+
+.cmt-name {
+    font-weight: 700;
+}

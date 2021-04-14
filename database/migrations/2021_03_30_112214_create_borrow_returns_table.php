@@ -21,6 +21,7 @@ class CreateBorrowReturnsTable extends Migration
             $table->date('requiredDateReturn')->nullable();
             $table->date('dateReturn');
             $table->string('status');
+            $table->integer('formMode');
             $table->timestamps();
         });
     }

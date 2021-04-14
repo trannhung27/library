@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Like;
 use App\Models\Card;
 use App\Models\Comment;
+use App\Models\Chapter;
 use App\Models\Borrow_return;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class BookController extends Controller
     public function book($id)
     {
         $book = DB::table('books')->where('id',$id)->get();
-        return view("reader.book", ['book'=>$book]);
+        return view("book", ['book'=>$book]);
     }
 
     public function card(Request $request){
@@ -78,6 +79,7 @@ class BookController extends Controller
         // return response()->json([[$comment]]);
     }
 
+
     public function muonsach(Request $request){
         $iduser = $request->input('iduser');
         $name = $request->input('name');
@@ -85,21 +87,62 @@ class BookController extends Controller
         $phone = $request->input('phone');
         $email = $request->input('email');
         $book_id = $request->input('book_id');
-        $date_borrow = $request->input('date_borrow');
         $time_borrow = $request->input('time_borrow');
+        $date_borrow = $request->input('date_borrow');
         $time = explode(" ", $time_borrow);
+        $a = Carbon::now('Asia/Ho_Chi_Minh')->addMonths($time[0]);
+        $a = explode(" ", $a);
+        $b = explode(" ",$book_id);
 
         $borrow = new Borrow_return();
         $borrow->id_reader = $iduser;
-        $borrow->id_book = $book_id;
-        $borrow->dateBorrow = $date_borrow;
-        // $borrow->dateReturn = Carbon::now('Asia/Ho_Chi_Minh')->addMonths($time[0]);
-        $a = Carbon::now('Asia/Ho_Chi_Minh')->addMonths($time[0]);
-        $a = explode(" ", $a);
+        $borrow->id_book = $b[0];
+        $borrow->dateBorrow =$date_borrow;
         $borrow->dateReturn = $a[0];
         $borrow->requiredDateReturn = $date_borrow;
+        $borrow->formMode = 0;
         $borrow->status = "Chưa được duyệt";
         $borrow->save();
-        
+    }
+
+    public function check(Request $request){
+        $borrow_return = DB::table('borrow_returns')->where('id_book',$id);
+        $borrow_return->delete();
+    }
+
+    public function listchapter(Request $request){
+        $idbook = $request->input('idbook');
+        $listchapter = DB::table('chapters')->where('idbook',$idbook)->get();
+        return response(['response'=>$listchapter]);
+    }
+
+    public function checkrequest(Request $request)
+    {
+        $idbook = $request->input('idbook') ;
+        $iduser = $request->input('iduser');
+        $borrow_return = DB::table('borrow_returns')->where('id_book',$idbook)->where('id_reader',$iduser)->count();
+        return response()->json([[$borrow_return]]);
+    }
+
+    public function unseen_notification(Request $request)
+    {
+        $iduser = $request->input('iduser');
+        $notification = DB::table('borrow_returns')->where('id_reader',$iduser)->where('formMode','1')
+        ->join('books', 'borrow_returns.id_book', '=', 'books.id')
+        ->select('books.name')
+        ->get();
+        return response(['response'=>$notification]);
+    }
+
+    public function notification(Request $request)
+    {
+        $iduser = $request->input('iduser');
+        $notification = DB::table('borrow_returns')->where('id_reader',$iduser)->select('id')->get();
+        foreach($notification as $row)
+        {
+            $change_formMode = Borrow_return::find($row->id);
+            $change_formMode->formMode = 0;
+            $change_formMode->save();
+        }
     }
 }

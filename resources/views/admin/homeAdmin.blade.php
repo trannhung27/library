@@ -102,7 +102,7 @@
                         </div>
                         <div class="profile-userbuttons">
                             <button type="button" class="btn btn-success btn-sm" id="edit-pass">Chỉnh sửa</button>
-                            <button type="button" class="btn btn-danger btn-sm">Đăng xuất&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></button>
+                            <button type="button" id="add_book" class="btn btn-danger btn-sm">Thêm sách&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></button>
                         </div>
                         <div class="profile-usermenu">
                             <div class="usermenu-item"><a id="info-admin" href="#info-admin"><i class="fas fa-user"></i></i>&ensp;Thông tin cá nhân</a></div>
@@ -166,7 +166,7 @@
                                             <td>chỉnh sửa</td>
                                         </thead>
                                         <tbody>
-                                        @foreach($reader as $row)
+                                            @foreach($reader as $row)
                                             <tr>
                                                 <td>{{$row->id}}</td>
                                                 <td>{{$row->name}}</td>
@@ -176,9 +176,9 @@
                                                     <span><button class="delete_{{$row->id}}" id="" type="button" id="delete_reader"><i class="fas fa-trash"></i></button></span>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                            @endforeach
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
                             </div>
@@ -222,7 +222,7 @@
                                                     <span class="delete"><button type="button"><i class="fas fa-trash"></i></button></span>
                                                 </td>
                                             </tr>
-                                        </tbody>        
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -400,6 +400,61 @@
         </div>
 
     </div>
+    <div class="dialog-dk" id="from-muon-sach">
+        <div class="dialog-background-dk"></div>
+        <div class="dialog-box-dk">
+            <div class="dialog-box-header">
+                <span class="dialog-text-header">Thêm sách</span>
+                <button class="dialog-close">&times;</button>
+            </div>
+            
+            <div class="dialog-box-content">
+                <div class="dialog-content-item">
+                    Tên sách (<span style="color: red;">*</span>):
+                    <input class="form-control border-input" id="name" placeholder="Tên" type="text">
+                </div>
+                <div class="cards dialog-content-item">
+                    Thể loại (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" id="category" placeholder="Tiểu thuyết" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Tác giả (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" id="author" placeholder="JK...." type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Mô tả
+                    <input class="form-control border-input" id="description" placeholder="" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Số lượng(<span style="color: red;">*</span>)
+                    <input class="form-control border-input" id="amount" type="text">
+                </div>
+
+                <div class="groups" style="display: flex;">
+                    <div class="dialog-content-item" style="width: 50%; margin-right: -15px;">
+                        Năm xuất bản (<span style="color: red;">*</span>)
+                        <input class="form-control border-input" id="publishYear" placeholder="2001" type="text">
+                    </div>
+                    <div class="dialog-content-item" style="width: 50%;">
+                        Nhà xuất bản (<span style="color: red;">*</span>)
+                        <input class="form-control border-input" id="publisher" type="text">
+                    </div>
+                </div>
+                <div class="add_file" style="margin-left: 40px; margin-top: 10px;">
+                    <label for="myfile">Select a file:</label>
+                    <input type="file" id="add_image" name="add_image">
+                </div>
+
+                <div class="check" style="margin-top: 0px;"><input type="checkbox"> Tôi đồng ý các điều khoản trên</div>
+                <div class="dialog-content-item">
+                    <button class="dangky send">Gửi</button>
+                </div>
+            </div>
+            
+            <div class="dialog-box-footer">
+            </div>
+        </div>
+    </div>
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
@@ -413,235 +468,279 @@
 
 <script type='text/javascript'>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    function muon(){
-            $.ajax({
-                url: "{{URL::to('admin/borrow_return')}}",
-                type:'get',
-                data:{},
-                success: function(response){
-                    
-                    var borrow = "";
-                    $.each(response.response, function(index, value){
-                        borrow += 
-                            "<tr>"
-                            +   "<td>"+value.id_reader+"</td>"
-                            +   "<td>"+value.id_book+"</td>"
-                            +   "<td>"+value.name+"</td>"
-                            +   "<td>"+value.dateBorrow+"</td>"
-                            +   "<td>"+value.dateReturn+"</td>"
-                            +   "<td>"
-                            +       "<span class='duyet'><button data-id_duyet="+ value.id + " type='submit' class='btn btn-success' id='muon' style='font-weight: bold;'>Duyệt</button></span>"
-                            +       "<span class='da-duyet' hidden>Đã duyệt</span>"
-                            +   "</td>"
-                            +"</tr>"
-                    });
-                   
-                    $('.borrow table tbody').html('').append(borrow);
-                }
-            });
-    }
 
-    function tailieu(){
+    function muon() {
         $.ajax({
-                url: "{{URL::to('admin/manage_doc')}}",
-                type:'get',
-                data:{},
-                success: function(response){
-                    var reader = "";
-                    $.each(response.response, function(index, value){
-                        reader += 
-                            "<tr>"
-                            +   "<td>"+value.id+"</td>"
-                            +   "<td>"+value.name+"</td>"
-                            +   "<td>"+value.author+"</td>"
-                            +   "<td>"+value.publisher+"</td>"
-                            +   "<td>"+value.category+"</td>"
-                            +   "<td>"+value.amount+"</td>"
-                            +   "<td>20/03/2021</td>"
-                            +   "<td>"
-                            +       "<span class='edit'><button type='button'><i class='fas fa-pen'></i></button>&ensp;</span>"
-                            +       "<span class='delete'><button data-id_book="+ value.id + " type='submit' id='delete_book'><i class='fas fa-trash'></i></button></span>"
-                            +   "</td>"
-                            +"</tr>"
-                    });
-                    $('.document table tbody').html('').append(reader);
-                }
-            });
+            url: "{{URL::to('admin/borrow_return')}}",
+            type: 'get',
+            data: {},
+            success: function(response) {
+
+                var borrow = "";
+                $.each(response.response, function(index, value) {
+                    borrow +=
+                        "<tr>" +
+                        "<td>" + value.id_reader + "</td>" +
+                        "<td>" + value.id_book + "</td>" +
+                        "<td>" + value.name + "</td>" +
+                        "<td>" + value.dateBorrow + "</td>" +
+                        "<td>" + value.dateReturn + "</td>" +
+                        "<td>" +
+                        "<span class='duyet'><button data-id_duyet=" + value.id + " type='submit' class='btn btn-success' id='muon' style='font-weight: bold;'>Duyệt</button></span>" +
+                        "<span class='da-duyet' hidden>Đã duyệt</span>" +
+                        "</td>" +
+                        "</tr>";
+                });
+
+                $('.borrow table tbody').html('').append(borrow);
+            }
+        });
     }
 
-    function docgia(){
-            $.ajax({
-                url: "{{URL::to('admin/manage_reader')}}",
-                type:'get',
-                data:{},
-                success: function(response){
-                    var reader = "";
-                    $.each(response.response, function(index, value){
-                        reader += 
-                            "<tr>"
-                            +   "<td>"+value.id+"</td>"
-                            +   "<td>"+value.name+"</td>"
-                            +   "<td>"+value.phone+"</td>"
-                            +   "<td>"
-                            +       "<span><button class='edit' type='button'><i class='fas fa-pen'></i></button>&ensp;</span>"
-                            +       "<span><button class='delete_{{$row->id}}' id='' type='button' id='delete_reader'><i class='fas fa-trash'></i></button></span>"
-                            +   "</td>"
-                            "</tr>"
-                    });
-                    $('.reader table tbody').html('').append(reader);
-                }
-            });
-    }
-
-    function dangmuon(){
+    function tailieu() {
         $.ajax({
-                url: "{{URL::to('admin/dangmuon')}}",
-                type:'get',
-                data:{},
-                success: function(response){
-                    var borrow = "";
-                    $.each(response.response, function(index, value){
-                        borrow += 
-                            "<tr>"
-                            +   "<td>"+value.id_reader+"</td>"
-                            +   "<td>"+value.id_book+"</td>"
-                            +   "<td>"+value.name+"</td>"
-                            +   "<td>"+value.dateBorrow+"</td>"
-                            +   "<td>"+value.dateReturn+"</td>"
-                            +   "<td>Đang mượn</td>"
-                            +   "<td>"
-                            +       "<span class='delete'><button data-id_xoa="+ value.id + " type='submit' id='delete'><i class='fas fa-trash'></i></button></span>"
-                            +   "</td>"
-                            +"</tr>"
-                    });
-                   
-                    $('.dangmuon table tbody').html('').append(borrow);
-                }
-            });
+            url: "{{URL::to('admin/manage_doc')}}",
+            type: 'get',
+            data: {},
+            success: function(response) {
+                var reader = "";
+                $.each(response.response, function(index, value) {
+                    reader +=
+                        "<tr>" +
+                        "<td>" + value.id + "</td>" +
+                        "<td>" + value.name + "</td>" +
+                        "<td>" + value.author + "</td>" +
+                        "<td>" + value.publisher + "</td>" +
+                        "<td>" + value.category + "</td>" +
+                        "<td>" + value.amount + "</td>" +
+                        "<td>20/03/2021</td>" +
+                        "<td>" +
+                        "<span class='edit'><button type='button'><i class='fas fa-pen'></i></button>&ensp;</span>" +
+                        "<span class='delete'><button data-id_book=" + value.id + " type='submit' id='delete_book'><i class='fas fa-trash'></i></button></span>" +
+                        "</td>" +
+                        "</tr>"
+                });
+                $('.document table tbody').html('').append(reader);
+            }
+        });
     }
-    
-    $(document).ready(function(){
+
+    function docgia() {
+        $.ajax({
+            url: "{{URL::to('admin/manage_reader')}}",
+            type: 'get',
+            data: {},
+            success: function(response) {
+                var reader = "";
+                $.each(response.response, function(index, value) {
+                    reader +=
+                        "<tr>" +
+                        "<td>" + value.id + "</td>" +
+                        "<td>" + value.name + "</td>" +
+                        "<td>" + value.phone + "</td>" +
+                        "<td>" +
+                        "<span><button class='edit' type='button'><i class='fas fa-pen'></i></button>&ensp;</span>" +
+                        "<span><button class='delete_{{$row->id}}' id='' type='button' id='delete_reader'><i class='fas fa-trash'></i></button></span>" +
+                        "</td>"
+                    "</tr>"
+                });
+                $('.reader table tbody').html('').append(reader);
+            }
+        });
+    }
+
+    function dangmuon() {
+        $.ajax({
+            url: "{{URL::to('admin/dangmuon')}}",
+            type: 'get',
+            data: {},
+            success: function(response) {
+                var borrow = "";
+                $.each(response.response, function(index, value) {
+                    borrow +=
+                        "<tr>" +
+                        "<td>" + value.id_reader + "</td>" +
+                        "<td>" + value.id_book + "</td>" +
+                        "<td>" + value.name + "</td>" +
+                        "<td>" + value.dateBorrow + "</td>" +
+                        "<td>" + value.dateReturn + "</td>" +
+                        "<td>Đang mượn</td>" +
+                        "<td>" +
+                        "<span class='delete'><button data-id_xoa=" + value.id + " type='submit' id='delete'><i class='fas fa-trash'></i></button></span>" +
+                        "</td>" +
+                        "</tr>"
+                });
+                $('.dangmuon table tbody').html('').append(borrow);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+
+
+
         //Show thong tin doc gia
-        $('#info-admin').click(function(){
+        $('#info-admin').click(function() {
             $.ajax({
                 url: "{{URL::to('admin/manage_reader')}}",
-                type:'get',
-                data:{},
-                success: function(response){
+                type: 'get',
+                data: {},
+                success: function(response) {
 
                 }
             });
         });
 
-        $('#manage-reader').click(function(){
+        $('#manage-reader').click(function() {
             docgia();
         });
 
-        $('#manage-doc').click(function(){
+        $('#manage-doc').click(function() {
             tailieu();
         });
 
-        $('#manage-muon-tra').click(function(){
+        $('#manage-muon-tra').click(function() {
             muon();
             dangmuon();
         });
 
-        
+
         // xử lý đổi mật khẩu
-        $('#changepass').click(function(){
+        $('#changepass').click(function() {
             var iduser = $('#iduser').val();
             var oldpass = $('.oldpass').val();
             var newpass = $('.newpass').val();
-            if(iduser != '' && oldpass != '' && newpass != ''){
+            if (iduser != '' && oldpass != '' && newpass != '') {
                 $.ajax({
                     url: "{{URL::to('admin/changepass')}}",
                     type: 'post',
-                    data: {_token: CSRF_TOKEN, iduser: iduser, oldpass: oldpass, newpass:newpass},
-                    success: function(response){
-                        if(response == 1)
-                        {
+                    data: {
+                        _token: CSRF_TOKEN,
+                        iduser: iduser,
+                        oldpass: oldpass,
+                        newpass: newpass
+                    },
+                    success: function(response) {
+                        if (response == 1) {
                             alert("Đã đổi mật khẩu thành công");
                             $('.form-edit').hide();
-                        }
-                        else {
+                        } else {
                             alert("Vui lòng nhập lại mật khẩu");
                         }
                     }
                 });
-            }
-            else{
+            } else {
                 alert('Fill all fields');
             }
         });
 
         // xử lý đổi sdt
-        $('#changephone').click(function(){
+        $('#changephone').click(function() {
             var iduser = $('#iduser').val();
             var newphone = $('.newphone').val();
             var verification = $('.verification').val();
-            if(iduser != '' && verification != '' && newphone != ''){
+            if (iduser != '' && verification != '' && newphone != '') {
                 $.ajax({
                     url: "{{URL::to('admin/changephone')}}",
                     type: 'post',
-                    data: {_token: CSRF_TOKEN, iduser: iduser, verification: verification, newphone:newphone},
-                    success: function(response){
-                        if(response == 1)
-                        {
+                    data: {
+                        _token: CSRF_TOKEN,
+                        iduser: iduser,
+                        verification: verification,
+                        newphone: newphone
+                    },
+                    success: function(response) {
+                        if (response == 1) {
                             alert("Đã đổi số điện thoại thành công");
                             $('.form-edit').hide();
-                        }
-                        else {
+                        } else {
                             alert("Vui lòng nhập lại số điện thoại");
                         }
                     }
                 });
-            }
-            else{
+            } else {
                 alert('Fill all fields');
             }
         });
 
         //Xử lý đổi email
 
-        $('#changeemail').click(function(){
+        $('#changeemail').click(function() {
             var iduser = $('#iduser').val();
             var newemail = $('.newemail').val();
             var verification_email = $('.verification_email').val();
-            if(iduser != '' && verification_email != '' && newemail != ''){
+            if (iduser != '' && verification_email != '' && newemail != '') {
                 $.ajax({
                     url: "{{URL::to('admin/changeemail')}}",
                     type: 'post',
-                    data: {_token: CSRF_TOKEN, iduser: iduser, verification_email: verification_email, newemail:newemail},
-                    success: function(response){
-                        if(response == 1)
-                        {
+                    data: {
+                        _token: CSRF_TOKEN,
+                        iduser: iduser,
+                        verification_email: verification_email,
+                        newemail: newemail
+                    },
+                    success: function(response) {
+                        if (response == 1) {
                             alert("Đã đổi số điện thoại thành công");
                             $('.form-edit').hide();
-                        }
-                        else {
+                        } else {
                             alert("Vui lòng nhập lại số điện thoại");
                         }
                     }
                 });
-            }
-            else{
+            } else {
                 alert('Fill all fields');
             }
         });
 
-        $('.delete_reader').click(function(){
+        $('.delete_reader').click(function() {
 
+        });
+
+        // Thêm sách mới
+
+        $('.send').click(function(){
+            var name = $('#name').val();
+            var category = $('#category').val();
+            var author = $('#author').val();
+            var description = $('#description').val();
+            var amount = $('#amount').val();
+            var publishYear = $('#publishYear').val();
+            var publisher = $('#publisher').val();
+            var add_image = $('#add_image').val();
+            // alert(add_image);
+            $.ajax({
+                url: "{{URL::to('admin/add_book')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    name:name,
+                    category:category,
+                    author:author,
+                    description:description,
+                    amount:amount,
+                    publishYear:publishYear,
+                    publisher:publisher,
+                    add_image:add_image
+                },
+                success: function(response) {
+                    alert(response);
+                }
+            });
         });
     });
 
     // Duyệt yêu cầu mượn sách
-    $(document).on('click','#muon',function(){
+    $(document).on('click', '#muon', function() {
         var id = $(this).data('id_duyet');
         $.ajax({
             url: "{{URL::to('admin/duyet')}}",
-            type:'post',
-            data:{_token: CSRF_TOKEN, id:id},
-            success: function(response){
+            type: 'post',
+            data: {
+                _token: CSRF_TOKEN,
+                id: id
+            },
+            success: function(response) {
                 alert("Đã duyệt yêu cầu mượn thành công");
                 muon();
                 dangmuon();
@@ -650,14 +749,17 @@
     });
 
     // Xóa tài liệu đang được mượn(Người đọc trả sách rồi nên mk xóa)
-    $(document).on('click','#delete',function(){
+    $(document).on('click', '#delete', function() {
         var id = $(this).data('id_xoa');
-        
+
         $.ajax({
             url: "{{URL::to('admin/delete')}}",
-            type:'post',
-            data:{_token: CSRF_TOKEN, id:id},
-            success: function(response){
+            type: 'post',
+            data: {
+                _token: CSRF_TOKEN,
+                id: id
+            },
+            success: function(response) {
                 alert("Đã xóa");
                 dangmuon();
             }
@@ -665,14 +767,17 @@
     });
 
     // Xóa tài liệu
-    $(document).on('click','#delete_book',function(){
+    $(document).on('click', '#delete_book', function() {
         var id = $(this).data('id_book');
         alert(id);
         $.ajax({
             url: "{{URL::to('admin/delete_book')}}",
-            type:'post',
-            data:{_token: CSRF_TOKEN, id:id},
-            success: function(response){
+            type: 'post',
+            data: {
+                _token: CSRF_TOKEN,
+                id: id
+            },
+            success: function(response) {
                 alert("Đã xóa");
                 tailieu();
                 muon();
@@ -680,7 +785,7 @@
             }
         });
     });
-</script> 
+</script>
 
 
 </html>

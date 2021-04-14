@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Đơn mua</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="./bootstrap/js/app.js"></script>
+
+    <link rel="stylesheet" href="./asset/css/uikit.css">
+    <link rel="stylesheet" href="./fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap-min">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="bootstrap/css/style.css">
+
+</head>
+
+<body>
+    <div class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-inverse">
+            <div class="topheader1">
+                <div class="loginin">
+                    <a href=""><i class="fas fa-shopping-cart mr-4"></i></a>
+                    <i class="fas fa-user mr-1"> </i>
+                    <a href="./dangnhap.html">Đăng nhập /</a>
+                    <a href="./dangky.html">Đăng ký</a>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-inverse">
+            <div class="topheader">
+                <div class="menu">
+                    <a href="">TRANG CHỦ</a>
+                    <a href="">SẢN PHẨM</a>
+                    <a href="">TIN TỨC</a>
+                    <a href="">QUÀ TẶNG</a>
+                    <a href="">TIN TỨC</a>
+                    <a href="">TRÁI CÂY THEO MÙA</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-lg-3 d-none d-lg-block bg-light sidebar" style="margin-top: 170px;">
+                <ul class="d-menu">
+                    <li><i class="menu-icon fas fa-truck"> Vận chuyển</i>
+                        <i class="icon-dropdow fas fa-chevron-down"></i>
+                        <ul class="sub-menu">
+                            <li><a href="">Quản lý vận chuyển</a></li>
+                            <li><a href="">Giao hàng loạt</a></li>
+                            <li><a href="">Cài đặt vận chuyển</a></li>
+                        </ul>
+                    </li>
+                    <li><i class="menu-icon fas fa-tasks"> Quản Lý Đơn Hàng</i>
+                        <i class="icon-dropdow fas fa-chevron-down"></i>
+                        <ul class="sub-menu">
+                            <li><a href="">Tất cả</a></li>
+                            <li><a href="">Đơn huỷ</a></li>
+                            <li><a href="">Trả hàng hoàn tiền</a></li>
+                        </ul>
+                    </li>
+                    <li><i class="menu-icon fas fa-tasks"> Quản Lý Sản Phẩm</i>
+                        <i class="icon-dropdow fas fa-chevron-down"></i>
+                        <ul class="sub-menu">
+                            <li><a href="">Tất cả sản phẩm</a></li>
+                            <li><a href="">Thêm sản phẩm</a></li>
+                            <li><a href="">Sản phẩm vi phạm</a></li>
+                        </ul>
+                    </li>
+                    <li><i class="menu-icon fas fa-tasks"> Kênh Marketing</i>
+                        <i class="icon-dropdow fas fa-chevron-down"></i>
+                        <ul class="sub-menu">
+                            <li><a href="">Kênh Marketing</a></li>
+                            <li><a href="">Quảng cáo Shopee</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="col-lg-8" style="margin-top: 170px;">
+                <h2>Danh sách việc cần làm</h2>
+                <table id="productSizes" class="table table-bordered">
+                    <tbody>
+                        <tr class="d-flex">
+                            <td class="col-3">
+                                <p>0</p><a href="">Chờ xác nhận</a>
+                            </td>
+                            <td class="col-3">
+                                <p>0</p>
+                                <a href="">Chờ lấy hàng</a>
+                            </td>
+                            <td class="col-3">
+                                <p>0</p>
+                                <a href="">Đã xử lý</a>
+                            </td>
+                            <td class="col-3">
+                                <p>0</p>
+                                <a href="">Đơn huỷ</a>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3">0 <br> <a href="">Trả hàng - Hoàn tiền chờ xử lý</a></td>
+                            <td class="col-3">0 <br> <a href="">Sản phẩm bị tạm khoá</a></td>
+                            <td class="col-3">0 <br><a href="">Sản phẩm hết hàng</a></td>
+                            <td class="col-3">0 <br><a href="">Chương trình khuyến mãi nhờ xử lý</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </nav>
+        </div>
+    </div>
+
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="diachi">
+                        <img src="bootstrap/image/EasyAccomod.png" alt="">
+                        <h6><i class="fas fa-map-marker-alt"></i> 144 - Xuân Thuỷ - Cầu Giấy - Hà Nội</h6>
+                        <h6><i class="fas fa-mobile-alt"></i> 0353000112 - 056710100</h6>
+                        <h6><i class="far fa-envelope"></i> trannhung1234@gmail.com</h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3">
+                    <div class="taikhoan">
+                        <div class="td_footer">TÀI KHOẢN</div>
+                        <h6>Tìm kiếm</h6>
+                        <h6>Đăng ký</h6>
+                        <h6>Đăng nhập</h6>
+                        <h6>Giỏ hàng</h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-7">
+                    <div class="chinhsach">
+                        <div class="td_footer">CHÍNH SÁCH</div>
+                        <h6>Chính sách thanh toán</h6>
+                        <h6>Chính sách vận chuyển</h6>
+                        <h6>Chính sách đổi trả</h6>
+                        <h6>Chính sách bảo hành</h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-5 col-sm-5">
+                    <div class="dieukhoan">
+                        <div class="td_footer">ĐIỀU KHOẢN</div>
+                        <h6>Điều khoản sử dụng</h6>
+                        <h6>Điều khoản</h6>
+                        <h6>Chính sách đổi trả</h6>
+                        <h6>Chính sách bảo hành</h6>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="dieukhoan">
+                        <div class="td_footer">HƯỚNG DẪN</div>
+                        <h6>Hướng dẫn mua hàng</h6>
+                        <h6>Giao nhận, thanh toán</h6>
+                        <h6>Đổi trả và bảo hành</h6>
+                        <h6>Đổi trả và bảo hành</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__copyright">
+            <div class="container">
+                &copy; Bản quyền thuộc về .... 2005-2020 | Cung cấp bởi vn4u
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

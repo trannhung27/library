@@ -1,0 +1,146 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
+}
+
+a {
+	text-decoration:none;
+}
+
+
+/* Header */
+
+
+.demo-1{
+	background-image: url('../images/login.jpg');
+    /* background-position: center bottom; */
+    height: 100vh;
+    background-size: cover;
+}
+
+.demo-2{
+	background-image: url('../images/login.jpg');
+    /* background-position: center bottom; */
+    background-size: cover;
+    
+}
+
+
+/* Header */
+.main-agileits {
+	padding-top: 8%;
+    width: 50%;
+    margin: 0 auto;
+}
+.form-w3-agile h2 {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1em;
+    letter-spacing: 2px;
+}
+.form-w3-agile {
+    background: rgba(4, 4, 4, 0.56);
+    padding: 60px 40px;
+
+}
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 45px;
+    font-weight: bold;
+    margin: 40px 0;
+    color: #ffffff;
+    letter-spacing: 4px;
+    word-spacing: 4px;
+    font-family: 'Sirin Stencil', cursive;
+}
+.icon-w3 i {
+    color: #ffffff;
+    font-size: 16px;
+}
+.icon-w3 {
+    display: inline-block;
+    position: absolute;
+    right: 12px;
+    bottom: 26px;
+}
+form {
+    margin: 0 auto;
+    width: 100%;
+}
+.form-sub-w3{
+	position:relative;
+    margin-bottom: 20px;
+}
+.form-sub-w3 input[type="text"],input[type="password"] {
+    outline: none;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 15px 40px 15px 10px;
+    letter-spacing: 2px;
+    width: 87%;
+    border: none;
+    border: 1px solid #DCCBCF;
+    -webkit-appearance: none;
+    margin-bottom: 10px;
+    background: transparent;
+	font-family: 'Sirin Stencil', cursive;
+}
+.form-sub-w3 input[type="password"] {
+    outline: none;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 15px 40px 15px 10px;
+    width: 87%;
+    border: none;
+    border: 1px solid #DCCBCF;
+    -webkit-appearance: none;
+    margin-bottom: 10px;
+    background: transparent;
+	font-family: 'Sirin Stencil', cursive;
+}
+
+::placeholder{
+    color: #fff;
+}
+
+
+input[type="submit"] {
+    background: #fff;
+    color: #000;
+    outline: none;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    padding: 7px 35px;
+    font-size: 16px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+	font-family: 'Sirin Stencil', cursive;
+	transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+}
+input[type="submit"]:hover{
+    background: #4CAF50;
+	color:#ffffff;
+	transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+}
+
+.form-check{
+    color: #fff;
+}

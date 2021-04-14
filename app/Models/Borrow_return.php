@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Borrow_return extends Model
 {
     use HasFactory;
+    protected $table = 'borrow_returns';
 }
