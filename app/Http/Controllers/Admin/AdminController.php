@@ -161,6 +161,15 @@ class AdminController extends Controller
         $add_book->image = "aaa";
         $add_book->save();
     }
+
+    public function add_date()
+    {
+        $add_date = DB::table('borrow_returns')
+        ->join('books','books.id','=','borrow_returns.id_book')
+        ->select('borrow_returns.*','books.name')
+        ->where('dateReturn','!=','requiredDateReturn')->get();
+        return response(['response'=>$add_date]);
+    }
 }
 
 

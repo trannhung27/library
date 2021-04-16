@@ -17,11 +17,17 @@
                             <button type="button" class="btn btn-success btn-sm" id="edit-pass">Chỉnh sửa</button>
                             <button type="button" id="add_book" class="btn btn-danger btn-sm"><a style="color:white" href="/library/public/index">Đăng xuất</a>&ensp;<i class="fa fa-power-off" aria-hidden="true"></i></button>
                         </div>
+                        <div class="profile-usermenu">                    
+                            <div class="usermenu-item"><a href="#thongtincanhan" id="thongtincanhan"><i class="fas fa-file"></i>&ensp;Thông tin cá nhân</a></div>
+                            <div class="usermenu-item"><a href="#muontra" id="muontra"><i class="fas fa-file"></i>&ensp;Tài liệu mượn/trả</a></div>
+                            <div class="usermenu-item"><a href="#mucyeuthich" id="mucyeuthich"><i class="fas fa-file"></i>&ensp;Mục yêu thích</a></div>
+                        </div>                
+                     
                     </div>
                 </div>
                 <div class="col-md-9">
                     <!-- Thông tin người dùng -->
-                    <div class="profile-content" id="thongtincanhan-admin">
+                    <div class="profile-content" id="show-thongtincanhan">
                         <div class="prof-title">
                             <h3>&#45;&#45;Thông tin cá nhân&#45;&#45;</h3>
                         </div>
@@ -52,6 +58,53 @@
                             </table>
                         </div>
                     </div>
+                    <!-- Mượn trả -->
+                    <div class="profile-content" id="show-muontra">	
+                        <div class="prof-title">
+                            <h3>&#45;&#45;Thống kê tài liệu mượn/trả&#45;&#45;</h3>
+                        </div>
+                        <div class="main-profile-content" id="borrow">
+                            <table >
+                            <thead>
+                                <td style="width:12%;">Mã sách</td>
+                                <td style="width:30%;">Tên sách</td>
+                                <td>Tình trạng</td>
+                                <td style="width:16%;">Ngày mượn</td>
+                                <td style="width:16%;">Hạn trả</td>
+                                <td style="width:10%;">Gia hạn</td>
+                            </thead>
+                            <tr >
+                                <td>B1234</td>
+                                <td>Harry Potter và hòn đá phù thủy</td>
+                                <td>Đang mượn</td>
+                                <td>20/03/2021</td>
+                                <td>20/09/2021</td>
+                                <td><button type="submit" id="requiredDateReturn" data-id_add="">Add</button></td>
+                                
+                            </tr>
+                            </table>
+                        </div>
+                    </div> 
+                  <!-- Yêu thích -->
+                    <div class="profile-content" id="show-mucyeuthich">	
+                        <div class="prof-title" style="padding-bottom: 20px">
+                            <h3>&#45;&#45;Mục yêu thích&#45;&#45;</h3>
+                        </div>
+                        <div class="main-profile-content">
+                            <div class="container">
+                            <div class="row box">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                    <div class="book-box" id="favorite">
+                                        <!-- <a href="book.html"><figure><img src="{{asset('images/HarryPotter1.png')}}" alt="img"/></figure></a>
+                                        <div class="book-header">Harry Potter và hòn đá phù thủy</div>
+                                        <a href="book.html"><button style="background-color: green;">Xem thêm</button></a>
+                                        <a href="user.html"><button >Xóa</button></a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -110,9 +163,113 @@
         </div>
 
     </div>
-<script type='text/javascript'>
+    <!-- Yêu cầu xin gia hạn ngày trả sách -->
+    <div class="form-edit" id="form-edit-date">
+        <div class="dialog-background"></div>
+        <div class="form-box">
+            <div class="form-edit-header">
+                <h4>Gia hạn ngày trả sách</h4>
+                <button class="edit-close">&times;</button>
+            </div>
+            <div class="edit-content">
+                Nhập ngày gia hạn:
+                <div><input class="newdate" type="date" placeholder="" /></div>
+            </div>
+            <div class="form-edit-footer" id="changedate"><button>Submit</button></div>
+        </div>
+    </div>
+<!-- <script type='text/javascript'>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    function borrow_return(){
+        var iduser = $('#iduser').val();
+        $.ajax({
+            url: "{{URL::to('reader/borrow_return')}}/"+iduser,
+            type: 'get',
+            data: {
+                _token: CSRF_TOKEN,
+                iduser: iduser,
+            },
+            success: function(response) {
+                var borrow = "";
+                var count = 0;
+                $.each(response.response, function(index, value) {
+                    var status = "";
+                    if(value.dateReturn!=value.requiredDateReturn){
+                        status = "Đã xin gia hạn";
+                        borrow +=
+                        `<tr >
+                            <td>${value.id}</td>
+                            <td>${value.name}</td>
+                            <td>${value.status}</td>
+                            <td>${value.dateBorrow}</td>
+                            <td>${value.dateReturn}</td>
+                            <td>${status}</td>
+                        </tr>`;
+                    }
+                    else{
+                        borrow +=
+                        `<tr >
+                            <td>${value.id}</td>
+                            <td>${value.name}</td>
+                            <td>${value.status}</td>
+                            <td>${value.dateBorrow}</td>
+                            <td>${value.dateReturn}</td>
+                            <td><button type="submit" id="requiredDateReturn" data-id_add="${value.id}">Add</button></td>
+
+                        </tr>`;
+                    }
+                });
+                $('#borrow table tbody').html('').append(borrow);
+            }
+        });
+    }
+
+    function favorite_book(){
+        var iduser = $('#iduser').val();
+        $.ajax({
+            url: "{{URL::to('reader/favorite_book')}}/"+iduser,
+            type: 'get',
+            data: {
+                _token: CSRF_TOKEN,
+            },
+            success: function(response) {
+                var favorite = "";
+                var count = 0;
+                $.each(response.response, function(index, value) {
+                    favorite += 
+                    `<a href="/library/public/reader/book/${value.id}"><figure><img src="{{asset('images/${value.image}')}}" alt="img"/></figure></a>
+                    <div class="book-header">${value.name}</div>
+                    <a href="/library/public/reader/book/${value.id}"><button style="background-color: green;">Xem thêm</button></a>
+                    <button type="submit" data-id_delete="${value.id}" id="delete">Xóa</button>` 
+                });
+                $('#favorite').html('').append(favorite);
+            }
+        });
+    }
+
     $(document).ready(function() {
+
+        $('#show-muontra').hide();
+        $('#show-mucyeuthich').hide();
+        $('#form-edit-date').hide();
+
+        $('#thongtincanhan').click(function(){
+            $('#show-thongtincanhan').show();
+            $('#show-muontra').hide();
+            $('#show-mucyeuthich').hide();
+        });
+
+        $('#muontra').click(function(){
+            $('#show-thongtincanhan').hide();
+            $('#show-muontra').show();
+            $('#show-mucyeuthich').hide();
+        });
+
+        $('#mucyeuthich').click(function(){
+            $('#show-thongtincanhan').hide();
+            $('#show-muontra').hide();
+            $('#show-mucyeuthich').show();
+        });
 
         // xử lý đổi mật khẩu
         $('#changepass').click(function() {
@@ -202,7 +359,259 @@
             }
         });
 
-      
+        // Hiển thị những tài liệu mượn trả
+
+        borrow_return();
+
+        favorite_book();
+    });
+
+    // Ra hạn ngày mượn
+    $(document).on('click', '#requiredDateReturn', function() {
+        $('#form-edit-date').show();
+        var id = $(this).data('id_add');
+        
+        $(document).on('click','#changedate', function(){
+            var date = $('.newdate').val();
+            
+            $.ajax({
+                url: "{{URL::to('reader/requiredDate')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    id:id,
+                    // date:date
+                },
+                success: function(response) {
+                    alert("Đã yêu cầu gia hạn"); 
+                }
+            }); 
+        });
+    });
+
+    //Xóa khỏi mục thích
+    $(document).on('click', '#delete', function() {
+        var idbook = $(this).data('id_delete');
+        var iduser = $('#iduser').val();
+        $.ajax({
+            url: "{{URL::to('reader/favorite_delete')}}",
+            type: 'post',
+            data: {
+                _token: CSRF_TOKEN,
+                idbook:idbook,
+                iduser:iduser
+            },
+            success: function(response) {
+                alert("xóa thành công");
+                borrow_return();
+            }
+        });
+    });
+
+</script> -->
+
+<script type='text/javascript'>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    function borrow_return(){
+        var iduser = $('#iduser').val();
+        $.ajax({
+            url: "{{URL::to('reader/borrow_return')}}/"+iduser,
+            type: 'get',
+            data: {
+                _token: CSRF_TOKEN,
+                iduser: iduser,
+            },
+            success: function(response) {
+                var borrow = "";
+                var count = 0;
+                $.each(response.response, function(index, value) {
+                    var status = "";
+                    if(value.dateReturn!=value.requiredDateReturn){
+                        status = "Đã xin gia hạn";
+                        borrow +=
+                        `<tr >
+                            <td>${value.id}</td>
+                            <td>${value.name}</td>
+                            <td>${value.status}</td>
+                            <td>${value.dateBorrow}</td>
+                            <td>${value.dateReturn}</td>
+                            <td>${status}</td>
+                        </tr>`;
+                    }
+                    else{
+                        borrow +=
+                        `<tr >
+                            <td>${value.id}</td>
+                            <td>${value.name}</td>
+                            <td>${value.status}</td>
+                            <td>${value.dateBorrow}</td>
+                            <td>${value.dateReturn}</td>
+                            <td><button type="submit" id="requiredDateReturn" data-id_add="${value.id}">Add</button></td>
+
+                        </tr>`;
+                    }
+                });
+                $('#borrow table tbody').html('').append(borrow);
+            }
+        });
+    }
+    function favorite_book(){
+        var iduser = $('#iduser').val();
+        $.ajax({
+            url: "{{URL::to('reader/favorite_book')}}/"+iduser,
+            type: 'get',
+            data: {
+                _token: CSRF_TOKEN,
+            },
+            success: function(response) {
+                var favorite = "";
+                var count = 0;
+                $.each(response.response, function(index, value) {
+                    favorite += 
+                    `<a href="/library/public/reader/book/${value.id}"><figure><img src="{{asset('images/${value.image}')}}" alt="img"/></figure></a>
+                    <div class="book-header">${value.name}</div>
+                    <a href="/library/public/reader/book/${value.id}"><button style="background-color: green;">Xem thêm</button></a>
+                    <button type="submit" data-id_delete="${value.id}" id="delete">Xóa</button>` 
+                });
+                $('#favorite').html('').append(favorite);
+            }
+        });
+    }
+    $(document).ready(function() {
+        $('#show-muontra').show();
+        $('#show-mucyeuthich').hide();
+        $('#form-edit-date').hide();
+        $('#show-thongtincanhan').hide();
+        $('#thongtincanhan').click(function(){
+            $('#show-thongtincanhan').show();
+            $('#show-muontra').hide();
+            $('#show-mucyeuthich').hide();
+        });
+
+        $('#muontra').click(function(){
+            $('#show-thongtincanhan').hide();
+            $('#show-muontra').show();
+            $('#show-mucyeuthich').hide();
+            borrow_return();
+        });
+
+        $('#mucyeuthich').click(function(){
+            $('#show-thongtincanhan').hide();
+            $('#show-muontra').hide();
+            $('#show-mucyeuthich').show();
+            favorite_book();
+        });
+
+        // xử lý đổi mật khẩu
+        $('#changepass').click(function() {
+            var iduser = $('#iduser').val();
+            var oldpass = $('.oldpass').val();
+            var newpass = $('.newpass').val();
+            if (iduser != '' && oldpass != '' && newpass != '') {
+                $.ajax({
+                    url: "{{URL::to('reader/changepass')}}",
+                    type: 'post',
+                    data: {
+                        _token: CSRF_TOKEN,
+                        iduser: iduser,
+                        oldpass: oldpass,
+                        newpass: newpass
+                    },
+                    success: function(response) {
+                        if (response == 1) {
+                            alert("Đã đổi mật khẩu thành công");
+                            $('.form-edit').hide();
+                        } else {
+                            alert("Vui lòng nhập lại mật khẩu");
+                        }
+                    }
+                });
+            } else {
+                alert('Fill all fields');
+            }
+        });
+
+        // xử lý đổi sdt
+        $('#changephone').click(function() {
+            var iduser = $('#iduser').val();
+            var newphone = $('.newphone').val();
+            var verification = $('.verification').val();
+            if (iduser != '' && verification != '' && newphone != '') {
+                $.ajax({
+                    url: "{{URL::to('reader/changephone')}}",
+                    type: 'post',
+                    data: {
+                        _token: CSRF_TOKEN,
+                        iduser: iduser,
+                        verification: verification,
+                        newphone: newphone
+                    },
+                    success: function(response) {
+                        if (response == 1) {
+                            alert("Đã đổi số điện thoại thành công");
+                            $('.form-edit').hide();
+                        } else {
+                            alert("Vui lòng nhập lại số điện thoại");
+                        }
+                    }
+                });
+            } else {
+                alert('Fill all fields');
+            }
+        });
+
+        //Xử lý đổi email
+
+        $('#changeemail').click(function() {
+            var iduser = $('#iduser').val();
+            var newemail = $('.newemail').val();
+            var verification_email = $('.verification_email').val();
+            if (iduser != '' && verification_email != '' && newemail != '') {
+                $.ajax({
+                    url: "{{URL::to('reader/changeemail')}}",
+                    type: 'post',
+                    data: {
+                        _token: CSRF_TOKEN,
+                        iduser: iduser,
+                        verification_email: verification_email,
+                        newemail: newemail
+                    },
+                    success: function(response) {
+                        if (response == 1) {
+                            alert("Đã đổi số điện thoại thành công");
+                            $('.form-edit').hide();
+                        } else {
+                            alert("Vui lòng nhập lại số điện thoại");
+                        }
+                    }
+                });
+            } else {
+                alert('Fill all fields');
+            }
+        });
+
+        // Hiển thị những tài liệu mượn trả
+
+        
+    });
+
+    $(document).on('click', '#delete', function() {
+        var idbook = $(this).data('id_delete');
+        var iduser = $('#iduser').val();
+        $.ajax({
+            url: "{{URL::to('reader/favorite_delete')}}",
+            type: 'post',
+            data: {
+                _token: CSRF_TOKEN,
+                idbook:idbook,
+                iduser:iduser
+            },
+            success: function(response) {
+                alert("xóa thành công");
+                favorite_book();
+            }
+        });
     });
 </script>
+
 @endsection()

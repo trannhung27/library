@@ -391,10 +391,10 @@ $(document).ready(function() {
     doimatkhau();
     editsdt();
     editemail();
+    editdate();
     adminManage();
     readOnline();
     addbook();
-
 });
 
 function addbook() {
@@ -477,6 +477,12 @@ function editemail() {
     });
 }
 
+function editdate() {
+    $('.edit-close').click(function() {
+        $('#form-edit-date').hide();
+
+    });
+}
 
 function adminManage() {
     $('#manage-reader').click(function() {

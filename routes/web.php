@@ -18,13 +18,14 @@ Route::get('/index','App\Http\Controllers\IndexController@index');
 Route::post('/addUser', 'App\Http\Controllers\SignupController@addUser');
 Route::post('/login', 'App\Http\Controllers\LoginController@login');
 Route::post('/logout', 'App\Http\Controllers\LogoutController@Logout');
-
+Route::get('/book/{id}', 'App\Http\Controllers\IndexController@book');
 
 Route::group(['prefix'=>'reader'],function(){
 
     Route::get('/home', 'App\Http\Controllers\Reader\HomeController@home');
     Route::get('/book/{id}', 'App\Http\Controllers\Reader\BookController@book');
     Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');
+    Route::post('/checklike', 'App\Http\Controllers\Reader\BookController@checklike');
     Route::post('/showlike', 'App\Http\Controllers\Reader\BookController@showlike');
     Route::post('/comment', 'App\Http\Controllers\Reader\BookController@comment');
     Route::post('/showcomment', 'App\Http\Controllers\Reader\BookController@showcomment');
@@ -47,6 +48,11 @@ Route::group(['prefix'=>'reader'],function(){
     Route::post('/changepass', 'App\Http\Controllers\Reader\InformationController@changepass');
     Route::post('/changephone', 'App\Http\Controllers\Reader\InformationController@changephone');
     Route::post('/changeemail', 'App\Http\Controllers\Reader\InformationController@changeemail');
+    Route::get('/borrow_return/{id}', 'App\Http\Controllers\Reader\InformationController@borrow_return');
+    Route::post('/requiredDate', 'App\Http\Controllers\Reader\InformationController@requiredDate');
+    Route::get('/favorite_book/{id}', 'App\Http\Controllers\Reader\InformationController@favorite_book');
+    Route::post('/favorite_delete', 'App\Http\Controllers\Reader\InformationController@favorite_delete');
+    Route::post('/category', 'App\Http\Controllers\Reader\HomeController@category');
 });
 
 Route::group(['prefix'=>'admin'],function(){
@@ -62,6 +68,9 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('/delete', 'App\Http\Controllers\Admin\AdminController@delete');
     Route::post('/delete_book', 'App\Http\Controllers\Admin\AdminController@delete_book');
     Route::post('/add_book', 'App\Http\Controllers\Admin\AdminController@add_book');
+    Route::get('/add_date', 'App\Http\Controllers\Admin\AdminController@add_date');
 });
 Route::post('/like', 'App\Http\Controllers\Reader\BookController@like');
 
+
+Route::get('/aaaa', 'App\Http\Controllers\Reader\BooksController@test');

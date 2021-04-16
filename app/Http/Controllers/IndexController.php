@@ -13,5 +13,11 @@ class IndexController extends Controller
         $book = DB::table('books')->get();
         return view("index",['book'=>$book]);
     }
+
+    public function book($id)
+    {
+        $book = DB::table('books')->where('id',$id)->get();
+        return view("book", ['book'=>$book]);
+    }
 }
 

@@ -87,32 +87,6 @@
             </a>
         </div>
     </section>
-    <!-- about -->
-    <!-- <div class="about">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-10 offset-md-1">
-                  <div class="aboutheading">
-                     <h2>About <strong class="black">Us</strong></h2>
-                     <span>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</span>
-                  </div>
-               </div>
-            </div>
-            <div class="row border">
-               <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
-                  <div class="about-box">
-                     <p> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                     <a href="#">Read More</a>
-                  </div>
-               </div>
-               <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                  <div class="about-box">
-                     <figure><img src="images/about.png" alt="img" /></figure>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div> -->
     <!-- search books -->
     <div id="search">
          <div class="header-search">
@@ -155,11 +129,11 @@
             @foreach($book as $row)
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                     <div class="book-box">
-                        <a href="/library/public/book/{{$row->id}}">
+                        <a href="/library/public/reader/book/{{$row->id}}">
                         <figure><img src="{{asset('images/'.$row->image)}}" alt="img" /></figure>
                         </a>
                         <div class="book-header">{{$row->name}}</div>
-                        <a href="/library/public/book/{{$row->id}}"><button>Xem thêm</button></a>
+                        <a href="/library/public/reader/book/{{$row->id}}"><button>Xem thêm</button></a>
                     </div>
                 </div>
             @endforeach
@@ -191,71 +165,46 @@
             <div class="row box">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Khoa học-Công nghệ <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">Separated link</a></li>
+                        <button class="btn btn-large" id="science" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Khoa học-Công nghệ <span class="caret"></span></button>
+                        <ul class="dropdown-menu science">
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Kinh tế <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
+                        <button class="btn btn-large" id="economic" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Kinh tế <span class="caret"></span></button>
+                        <ul class="dropdown-menu economic">
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Kỹ thuật <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
+                        <button class="btn btn-large" id="engineering" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Kỹ thuật <span class="caret"></span></button>
+                        <ul class="dropdown-menu engineering">
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Kỹ năng sống <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
+                        <button class="btn btn-large" id="skill" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Kỹ năng sống <span class="caret"></span></button>
+                        <ul class="dropdown-menu skill">]
                         </ul>
                     </div>
 
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Tiểu thuyết <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
+                        <button class="btn btn-large" id="novel" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Tiểu thuyết <span class="caret"></span></button>
+                        <ul class="dropdown-menu novel">
+                            
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="btn-group">
-                        <button class="btn btn-large" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Ngoại ngữ <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
+                        <button class="btn btn-large" id="language" data-toggle="dropdown"><i class="fas fa-bars"></i>&emsp;Ngoại ngữ <span class="caret"></span></button>
+                        <ul class="dropdown-menu language">
                         </ul>
                     </div>
                 </div>
@@ -381,15 +330,15 @@
                         var books = "";
                         $.each(response.response, function(index, value){
                             books += 
-                            "<div class='col-xl-3 col-lg-3 col-md-3 col-sm-12'>"
-                            +   "<div class='book-box'>"
-                            +       "<a href='/library/public/reader/book/"+value.id+"'>"
-                            +       "<figure><img src='{{asset('images/HarryPotter1.png')}}'></figure>"
-                            +       "</a>"
-                            +       "<div class='book-header'>"+value.name+"</div>"
-                            +       "<a href='/library/public/reader/book/"+value.id+"'><button>Xem thêm</button></a>"
-                            +   "</div>"
-                            +"</div>"
+                            `<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                                <div class="book-box">
+                                    <a href="/library/public/reader/book/${value.id}">
+                                    <figure><img src="{{asset('images/${value.image}')}}"></figure>
+                                    </a>"
+                                    <div class="book-header">${value.name}</div>
+                                    <a href="/library/public/reader/book/${value.id}"><button>Xem thêm</button></a>
+                                "</div>"
+                            </div>`
                         });
                         $('.book').html('').append(books);
                         
@@ -397,6 +346,127 @@
                 });
             }
            
+        });
+
+        $('#novel').click(function(){
+            var category = "Tiểu thuyết";
+            $.ajax({
+                url: "{{URL::to('reader/category')}}",
+                type: 'post',
+                data:{
+                    _token: CSRF_TOKEN,
+                    category:category,
+                },
+                success: function(response){
+                    var books = "";
+                    $.each(response.response, function(index, value){
+                        books += `
+                            <li><a href="/library/public/reader/book/${value.id}">${value.name}</a></li>`;
+                        
+                    });
+                    $('.novel').html('').append(books);
+                }
+            });
+        });
+        $('#science').click(function(){
+            var category = "Khoa học";
+            $.ajax({
+                url: "{{URL::to('reader/category')}}",
+                type: 'post',
+                data:{
+                    _token: CSRF_TOKEN,
+                    category:category,
+                },
+                success: function(response){
+                    var books = "";
+                    $.each(response.response, function(index, value){
+                        books += `
+                            <li><a href="/library/public/reader/book/${value.id}">${value.name}</a></li>`;
+                        
+                    });
+                    $('.science').html('').append(books);
+                }
+            });
+        });
+        $('#economic').click(function(){
+            var category = "Kinh tế";
+            $.ajax({
+                url: "{{URL::to('reader/category')}}",
+                type: 'post',
+                data:{
+                    _token: CSRF_TOKEN,
+                    category:category,
+                },
+                success: function(response){
+                    var books = "";
+                    $.each(response.response, function(index, value){
+                        books += `
+                            <li><a href="/library/public/reader/book/${value.id}">${value.name}</a></li>`;
+                        
+                    });
+                    $('.economic').html('').append(books);
+                }
+            });
+        });
+        $('#skill').click(function(){
+            var category = "Kỹ năng";
+            $.ajax({
+                url: "{{URL::to('reader/category')}}",
+                type: 'post',
+                data:{
+                    _token: CSRF_TOKEN,
+                    category:category,
+                },
+                success: function(response){
+                    var books = "";
+                    $.each(response.response, function(index, value){
+                        books += `
+                            <li><a href="/library/public/reader/book/${value.id}">${value.name}</a></li>`;
+                        
+                    });
+                    $('.skill').html('').append(books);
+                }
+            });
+        });
+        $('#language').click(function(){
+            var category = "Ngoại ngữ";
+            $.ajax({
+                url: "{{URL::to('reader/category')}}",
+                type: 'post',
+                data:{
+                    _token: CSRF_TOKEN,
+                    category:category,
+                },
+                success: function(response){
+                    var books = "";
+                    $.each(response.response, function(index, value){
+                        books += `
+                            <li><a href="/library/public/reader/book/${value.id}">${value.name}</a></li>`;
+                        
+                    });
+                    $('.language').html('').append(books);
+                }
+            });
+        });
+        $('#engineering').click(function(){
+            var category = "Kỹ thuật";
+            $.ajax({
+                url: "{{URL::to('reader/category')}}",
+                type: 'post',
+                data:{
+                    _token: CSRF_TOKEN,
+                    category:category,
+                },
+                success: function(response){
+                    var books = "";
+                    $.each(response.response, function(index, value){
+                        books += `
+                            <li><a href="/library/public/reader/book/${value.id}">${value.name}</a></li>`;
+                        
+                    });
+                    $('.engineering').html('').append(books);
+                }
+            });
         });
     });
 </script>

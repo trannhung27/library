@@ -14,4 +14,11 @@ class BooksController extends Controller
         $book = DB::table('books')->get();
         return view("reader.books", ['book'=>$book]);
     }
+
+    public function test()
+    {
+        # code...
+        $result = Book::all();
+        return $result;
+    }
 }

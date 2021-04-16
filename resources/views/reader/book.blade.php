@@ -1,5 +1,5 @@
-@extends('head')
-@section('body')
+@extends('reader.head')
+@section('content')
     <div class="a-book col-md-8">
         @foreach($book as $row)
         <div class="header-padding"></div>
@@ -9,7 +9,7 @@
                 <h2>{{$row->name}} </h2>
                 <input type="hidden" value="{{$row->id}}" id="idbook">
                 <input type="hidden" value="{{Auth::user()->id}}" id="iduser">
-                <button type="submit" id="like" class="like">
+                <button type="submit" id="like" class="like color">
                     
                 </button>
                 <table>
@@ -35,7 +35,7 @@
                             <p>Mã sách : <strong style=" color: #B32137;">{{$row->id}}</strong></p>
                         </td>
                         <td class="an" style="padding-left:20px;">
-                            <p><i class="fa fa-eye" aria-hidden="true"></i>&ensp;Lượt xem : <strong>6523712</strong></p>
+                            <p>&ensp;Lượt xem : <strong>6523712</strong></p>
                         </td>
                     </tr>
                 </table>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="info-button">
-                    <!-- <button id="muon-sach">Mượn sách</button> -->
+                    <button id="muon-sach">Mượn sách</button>
                     <button id="readOnline">Đọc online</button>
                 </div>
             </div>
@@ -95,6 +95,19 @@
                             <div class="comments-details">
                                 <span class="total-comments comments-sort">117 Bình luận</span>
                             </div>
+                            <div class="comment-box add-comment">
+                                <span class="commenter-pic">
+                                    <img src="{{asset('images/avatar-default.png')}}" class="img-fluid">
+                                </span>
+                                <span class="commenter-name">
+                                    <form action="" id="form">
+                                        <input type="text" id="add_comment" placeholder="Thêm bình luận công khai" name="Add Comment">
+                                
+                                    </form>
+                                    <button type="submit" id="sendcomment" class="btn btn-default">Bình luận</button>
+                                    <button type="cancel" class="btn btn-default">Hủy</button>
+                                </span>
+                            </div>
                             <div class="comment-box showcomment">
 
                             </div>
@@ -108,7 +121,55 @@
     </div>
     <!-- footer -->
     <!-- Mượn sách -->
-    
+    <div class="dialog-dk" id="from-muon-sach">
+        <div class="dialog-background-dk"></div>
+        <div class="dialog-box-dk">
+            <div class="dialog-box-header">
+                <span class="dialog-text-header">Mượn sách</span>
+                <button class="dialog-close">&times;</button>
+            </div>
+            <div class="dialog-box-content">
+                <div class="dialog-content-item">
+                    Họ tên (<span style="color: red;">*</span>):
+                    <input class="form-control border-input" id="name" placeholder="Họ tên" value="{{Auth::user()->name}}" type="text">
+                </div>
+                <div class="cards dialog-content-item">
+                    Mã thẻ thư viện (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" placeholder="mã thẻ" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Số điện thoại liên hệ (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" id="phone" placeholder="Số điện thoại" value="{{Auth::user()->phone}}" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Email liên hệ
+                    <input class="form-control border-input" id="email" placeholder="email" value="{{Auth::user()->email}}" type="text">
+                </div>
+                <div class="dialog-content-item">
+                    Mã sách - Tên sách (<span style="color: red;">*</span>)
+                    <input class="form-control border-input" value="{{$row->id}} - {{$row->name}}" id="book_id" placeholder="Harry Potter - B0123" type="text">
+                </div>
+
+                <div style="margin:5px 40px 0px 40px;">Ngày mượn (<span style="color: red;">*</span>)</div>
+                <div class="dialog-content-item item-2">
+                    <input class="form-control border-input" id="date_borrow" type="date">
+                    <select id="time_borrow">
+                        <option style="color: grey;">Thời hạn mượn</option>
+                        <option id ="1 thang">1 tháng</option>
+                        <option id ="2 thang">2 tháng</option>
+                        <option id ="3 thang">3 tháng</option>
+                        <option id ="4 thang">6 tháng</option>
+                    </select>
+                </div>
+                <div class="check"><input type="checkbox"> Tôi đồng ý các điều khoản trên</div>
+                <div class="dialog-content-item">
+                    <button class="dangky send">Gửi</button>
+                </div>
+            </div>
+            <div class="dialog-box-footer">
+            </div>
+        </div>
+    </div>
 
     <div id="chapter-list">
         <div class="dialog-background-dk"></div>
@@ -147,12 +208,38 @@
             }
         });
     }
+    function like(){
+        var iduser = $('#iduser').val();
+        var idbook = $('#idbook').val();
+        if (iduser != '' && idbook != '') {
+            $.ajax({
+                url: "{{URL::to('reader/checklike')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    iduser: iduser,
+                    idbook: idbook
+                },
+                success: function(response) {
+                    if(response ==0){
+                        $(".info-book .color").css("background-color","#B32137");
+                    }
+                    else{
+                        $(".info-book .color").css("background-color","#aa2b8d");
+                    }
+                }
+            });
+        } else {
+            alert('Fill all fields');
+        }
+    }
     $(document).ready(function() {
         setInterval(function() {
             numberlike();
             showcomment();
-        }, 3000);
+        }, 1000);
         // Xử lý ajax cho việc đăng ký
+        like();
         $('#like').click(function() {
             var iduser = $('#iduser').val();
             var idbook = $('#idbook').val();
@@ -165,7 +252,14 @@
                         iduser: iduser,
                         idbook: idbook
                     },
-                    success: function(response) {}
+                    success: function(response) {
+                        if(response ==0){
+                            $(".info-book .color").css("background-color","#aa2b8d");
+                        }
+                        else{
+                            $(".info-book .color").css("background-color","#B32137");
+                        }
+                    }
                 });
             } else {
                 alert('Fill all fields');
@@ -188,6 +282,81 @@
                 },
                 success: function(response) {
                     $('#form')[0].reset();
+                }
+            });
+        });
+
+        // Xử lý hiển thị thẻ card
+        $('#muon-sach').click(function() {
+            var idbook = $('#idbook').val();
+            var iduser = $('#iduser').val();
+
+            $.ajax({
+                url: "{{URL::to('reader/checkrequest')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    iduser: iduser,
+                    idbook:idbook,
+                },
+                success: function(response) {
+                    if(response == 1)
+                    {
+                        alert("Đã gửi yc");
+                        $('.dialog-dk').hide();
+                        $('header').show();
+                    }
+                    else{
+                        $.ajax({
+                            url: "{{URL::to('reader/card')}}",
+                            type: 'post',
+                            data: {
+                                _token: CSRF_TOKEN,
+                                iduser: iduser,
+                            },
+                            success: function(response) {
+                                var card = "";
+                                $.each(response.response, function(index, value) {
+                                    card = value.cardNumber;
+
+                                });
+                                $('.cards').html("Mã thẻ thư viện (<span style='color: red;'>*</span>)<input id='card_Number' class='form-control border-input' value='" + card + "' placeholder='mã thẻ' type='text'>");
+                            }
+                        });
+                    }
+                }
+            })
+            
+        });
+
+        //Xử lý đăng ký mượn sách
+        $('.send').click(function() {
+            var iduser = $('#iduser').val();
+            var name = $('#name').val();
+            var card_Number = $('#card_Number').val();
+            var phone = $('#phone').val();
+            var email = $('#email').val();
+            var book_id = $('#book_id').val();
+            var date_borrow = $('#date_borrow').val();
+            var time_borrow = $('#time_borrow').val();
+            $.ajax({
+                url: "{{URL::to('reader/muonsach')}}",
+                type: 'post',
+                data: {
+                    _token: CSRF_TOKEN,
+                    iduser: iduser,
+                    name: name,
+                    card_Number: card_Number,
+                    phone: phone,
+                    email: email,
+                    book_id: book_id,
+                    date_borrow:date_borrow,
+                    time_borrow: time_borrow
+                },
+                success: function(response) {
+                    alert("Đã gửi yêu cầu mượn sách và đang chờ phê duyệt");
+                    $('.dialog-dk').hide();
+                    $('header').show();
                 }
             });
         });

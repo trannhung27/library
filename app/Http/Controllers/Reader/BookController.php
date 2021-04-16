@@ -20,7 +20,7 @@ class BookController extends Controller
     public function book($id)
     {
         $book = DB::table('books')->where('id',$id)->get();
-        return view("book", ['book'=>$book]);
+        return view("reader.book", ['book'=>$book]);
     }
 
     public function card(Request $request){
@@ -28,6 +28,25 @@ class BookController extends Controller
         $card = DB::table('users')->join('cards','users.id','=','cards.id_reader')->where('id',$iduser)->select('cards.cardNumber')->get();
         return response(['response'=>$card]);
         
+    }
+
+
+    public function checklike(Request $request)
+    {
+        $idbook = $request->input('idbook') ;
+        $iduser = $request->input('iduser');
+        $like = DB::table('likes')->get();
+        $idlike ="";
+        foreach($like as $row)
+        {
+            if($row->iduser == $iduser && $row->idbook == $idbook){
+                $idlike = $row->id;
+                $deleteLike = Like::find($idlike);
+                $deleteLike->delete();
+                return response()->json([[0]]);
+            }
+        }
+        return response()->json([[1]]);
     }
 
     public function like(Request $request)
@@ -50,7 +69,8 @@ class BookController extends Controller
         $addlike->iduser = $iduser;
         $addlike->idbook = $idbook;
         $addlike->save();
-    }
+        return response()->json([[1]]);
+    } 
 
     public function showlike(Request $request){
         $idbook = $request->input('idbook') ;
@@ -99,7 +119,7 @@ class BookController extends Controller
         $borrow->id_book = $b[0];
         $borrow->dateBorrow =$date_borrow;
         $borrow->dateReturn = $a[0];
-        $borrow->requiredDateReturn = $date_borrow;
+        $borrow->requiredDateReturn = $a[0];
         $borrow->formMode = 0;
         $borrow->status = "Chưa được duyệt";
         $borrow->save();

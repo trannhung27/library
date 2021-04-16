@@ -33,6 +33,13 @@ class HomeController extends Controller
         // }
         // return response()->json([[$a]]);
     }
+
+    public function category(Request $request)
+    {
+        $category = $request->input('category');
+        $book = DB::table('books')->where('category',$category)->get();
+        return response(['response'=>$book]);
+    }
 }
 
 

@@ -163,7 +163,7 @@
                                             <td style="width:20%">Mã độc giả</td>
                                             <td style="width:35%">Họ tên</td>
                                             <td style="width:25%">Số điện thoại</td>
-                                            <td>chỉnh sửa</td>
+                                            <td>Xóa</td>
                                         </thead>
                                         <tbody>
                                             @foreach($reader as $row)
@@ -172,7 +172,6 @@
                                                 <td>{{$row->name}}</td>
                                                 <td>{{$row->phone}} </td>
                                                 <td>
-                                                    <span><button class="edit" type="button"><i class="fas fa-pen"></i></button>&ensp;</span>
                                                     <span><button class="delete_{{$row->id}}" id="" type="button" id="delete_reader"><i class="fas fa-trash"></i></button></span>
                                                 </td>
                                             </tr>
@@ -296,14 +295,13 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="manage-content">
+                                <div class="manage-content add_date">
                                     <div style="font-weight: bold;">Yêu cầu gia hạn thêm thời gian trả</div>
                                     <table>
                                         <thead>
                                             <td style="width:12%;">Độc giả</td>
                                             <td style="width:12%;">Mã sách</td>
                                             <td style="width:26%;">Tên sách</td>
-                                            <td style="width:8%;">gia hạn thêm (tháng)</td>
                                             <td style="width:16%;">Ngày hẹn trả ban đầu</td>
                                             <td style="width:16%;">Ngày hẹn trả mới</td>
                                             <td>Phê duyệt</td>
@@ -313,7 +311,6 @@
                                             <td>MB-01030</td>
                                             <td>DG-10234</td>
                                             <td>harry Potter</td>
-                                            <td>1</td>
                                             <td>20/03/2021</td>
                                             <td>20/03/2021</td>
                                             <td>
@@ -327,7 +324,6 @@
                                             <td>MB-01030</td>
                                             <td>DG-10234</td>
                                             <td>harry Potter</td>
-                                            <td>1</td>
                                             <td>20/03/2021</td>
                                             <td>20/03/2021</td>
                                             <td>
@@ -539,7 +535,6 @@
                         "<td>" + value.name + "</td>" +
                         "<td>" + value.phone + "</td>" +
                         "<td>" +
-                        "<span><button class='edit' type='button'><i class='fas fa-pen'></i></button>&ensp;</span>" +
                         "<span><button class='delete_{{$row->id}}' id='' type='button' id='delete_reader'><i class='fas fa-trash'></i></button></span>" +
                         "</td>"
                     "</tr>"
@@ -575,6 +570,35 @@
         });
     }
 
+    function add_date(){
+        $.ajax({
+            url: "{{URL::to('admin/add_date')}}",
+            type: 'get',
+            data: {},
+            success: function(response) {
+
+                var add_date = "";
+                $.each(response.response, function(index, value) {
+                    add_date +=
+                        `<tr>
+                            <td>${value.id_book}</td>
+                            <td>${value.id_reader}</td>
+                            <td>${value.name}</td>
+                            <td>${value.dateReturn}</td>
+                            <td>${value.requiredDateReturn}</td>
+                            <td>
+                                <span class="duyet"><button type="button" class="btn btn-success" style="font-weight: bold;">Duyệt</button></span>
+                                <span class="da-duyet" hidden>Đã duyệt</span>
+                            </td>
+
+                        </tr>`;
+                });
+
+                $('.add_date table tbody').html('').append(add_date);
+            }
+        });
+    }
+
     $(document).ready(function() {
 
 
@@ -602,6 +626,7 @@
         $('#manage-muon-tra').click(function() {
             muon();
             dangmuon();
+            add_date();
         });
 
 

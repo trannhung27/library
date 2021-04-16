@@ -61,7 +61,7 @@
                                         <li><a href="/library/public/reader/newbook">Sách mới</a></li>
                                         <li><a href="/library/public/reader/library">Thư viện</a></li>
                                         <li><a href="/library/public/reader/contact">Liên hệ</a></li>
-                                        <li><a href="" id="notify"><i style="font-size: 20px; color: white;" class="far fa-bell"></i></a></li>
+                                        <li><a href="/library/public/reader/information" id="notify"><i style="font-size: 20px; color: white;" class="far fa-bell"></i></a></li>
                                         <li class="mean-last">
                                             <div style="display: flex;">
                                                 <a href="/library/public/reader/information">
@@ -142,10 +142,9 @@
         }
 
         $(document).ready(function(){
-
             setInterval(function() {
                 unseen_notification();
-            }, 3000);
+            }, 1000);
             var iduser = $('#iduser').val();
             $('.alert').hide();
             $("#notify").hover(function() {
@@ -160,10 +159,14 @@
                         _token: CSRF_TOKEN,
                         iduser: iduser,
                     },
-                    success: function(response) {
-                    }
-                });
+                    // success: function(response) {
+                    //     unseen_notification();
+                    // }
+                }).done(function(response){
+                    unseen_notification();
+                })
             });
+
         });
     </script>
 </body>
